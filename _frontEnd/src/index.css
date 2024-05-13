@@ -1,0 +1,18 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+:root{
+  --color-1: #012D4E;
+  --color-2: #D4DDE7;
+  --color-3: #00D8C3;
+  --color-4: #081854;
+  --color-4: #6B6E70;
+  --color-4: #DEE5E8;
+  --color-5: #3F3D56;
+  --color-6: #007BFF;
+  --color-7: #259C40;
+}

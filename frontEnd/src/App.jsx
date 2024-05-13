@@ -17,10 +17,11 @@ function App() {
   return (
     <Router>
       <Container>
-        <Routes>
-            <Route path={'/'} element={<Dashboard/> }/>
-            <Route path={'/course'} element={<Course/> }/>
-        </Routes>
+        <Dashboard>
+          <Routes>
+              <Route path={'/course'} element={<Course/> }/>
+          </Routes>
+        </Dashboard>
       </Container>
     </Router>
   )

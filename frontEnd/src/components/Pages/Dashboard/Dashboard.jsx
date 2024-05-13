@@ -3,7 +3,6 @@ import NavBar from '../../layout/NavBar'
 import Sidebar from '../../layout/Sidebar'
 import styles from './Dashboard.module.css'
 
-import Course from '../Course'
 
 export default function Dashboard({children}) {
 
