@@ -1,0 +1,252 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Usuario {
+  idUsuario String   @id @default(uuid())
+  email     String   @unique
+  senha     String
+  role      Roles
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+
+  @@map("Usuarios")
+}
+
+enum Roles {
+  admin
+  stundent
+  teacher
+}
+
+model Aluno {
+  idAluno        String       @id @default(uuid())
+  enderecosId    String       @unique
+  responsaveisId String       @unique
+  n_matricula    Int          @unique
+  nome           String
+  data_inscricao DateTime     @db.Date
+  documento      String
+  numero_bi      String       @unique
+  bi_validade    String
+  nacionalidade  String
+  genero         String
+  telefone       String
+  email          String       @unique
+  foto           String?
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @default(now())
+  responsavel    Responsavel? @relation(fields: [responsaveisId], references: [idResponsavel])
+  Endereco       Endereco?    @relation(fields: [enderecosId], references: [idEndereco])
+  AlunoTurma     AlunoTurma[]
+  avaliacao      Avaliacao[]
+  pagamento      Pagamento[]
+  matricula      Matricula[]
+
+  @@map("Alunos")
+}
+
+model Responsavel {
+  idResponsavel String    @id() @default(uuid())
+  enderecosId   String    @unique
+  nome_pai      String
+  nome_mae      String
+  telefonePai   String    @unique
+  aluno         Aluno?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @default(now())
+  Endereco      Endereco? @relation(fields: [enderecosId], references: [idEndereco], onDelete: Cascade, onUpdate: Cascade)
+
+  @@map("Responsaveis")
+}
+
+model Endereco {
+  idEndereco String       @id() @default(uuid())
+  municipio  String
+  bairro     String
+  rua        String
+  casa       String
+  aluno      Aluno?
+  resposavel Responsavel?
+  professor  Professor?
+  created_At DateTime     @default(now())
+  updated_At DateTime     @default(now())
+
+  @@map("Enderecos")
+}
+
+model Curso {
+  idCurso   String   @id @default(uuid())
+  nome      String
+  descricao String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+  Turma     Turma[]
+
+  @@map("Cursos")
+}
+
+model Epoca {
+  idEpoca   String   @id @default(uuid())
+  nome      String
+  descricao String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+  Turma     Turma[]
+
+  @@map("Epocas")
+}
+
+model Disciplina {
+  idDisciplina  String          @id @default(uuid())
+  nome          String
+  descricao     String?
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @default(now())
+  discProfessor DiscProfessor[]
+  avaliacao     Avaliacao[]
+
+  @@map("Disciplinas")
+}
+
+model Nivel {
+  idNivel   String   @id @default(uuid())
+  nome      String
+  descricao String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+  Turma     Turma[]
+
+  @@map("Níveis_Acedemicos")
+}
+
+model Turma {
+  idTurma     String       @id @default(uuid())
+  nome        String
+  curso       Curso?       @relation(fields: [cursosId], references: [idCurso])
+  cursosId    String?
+  nivel       Nivel?       @relation(fields: [niveisId], references: [idNivel])
+  niveisId    String?
+  epoca       Epoca?       @relation(fields: [epocasId], references: [idEpoca])
+  epocasId    String?
+  data_inicio DateTime
+  data_fim    DateTime
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @default(now())
+  avalicao    Avaliacao[]
+  AlunoTurma  AlunoTurma[]
+
+  @@map("Turmas")
+}
+
+model AlunoTurma {
+  idAluno_turma String   @id @default(uuid())
+  aluno         Aluno?   @relation(fields: [alunosId], references: [idAluno])
+  alunosId      String?
+  turma         Turma?   @relation(fields: [turmasId], references: [idTurma])
+  turmasId      String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @default(now())
+
+  @@map("AlunoTurmas")
+}
+
+model Professor {
+  idProfessor   String          @id @default(uuid())
+  usuarioId     String          @unique
+  enderecosId   String          @unique
+  nome          String
+  formacao      String
+  nivel         String
+  numero_bi     String          @unique
+  validade_bi   String
+  Documento     String
+  telefone      String          @unique
+  email         String          @unique
+  foto          String?
+  salario       Float
+  Endereco      Endereco?       @relation(fields: [enderecosId], references: [idEndereco], onDelete: Cascade, onUpdate: Cascade)
+  discprofessor DiscProfessor[]
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @default(now())
+
+  @@map("Professores")
+}
+
+model DiscProfessor {
+  id            String      @id @default(uuid())
+  professor     Professor?  @relation(fields: [professoresId], references: [idProfessor])
+  professoresId String?
+  disciplina    Disciplina? @relation(fields: [disciplinasId], references: [idDisciplina])
+  disciplinasId String?
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @default(now())
+
+  @@map("DiscProfessores")
+}
+
+model Avaliacao {
+  idAvaliacao   String      @id @default(uuid())
+  parcelar1     Float
+  parcelar2     Float
+  parcelar3     Float
+  recurso       Float
+  mediaFinal    Float
+  Aluno         Aluno?      @relation(fields: [alunosId], references: [idAluno])
+  alunosId      String?
+  Disciplina    Disciplina? @relation(fields: [disciplinasId], references: [idDisciplina])
+  disciplinasId String?
+  Turma         Turma?      @relation(fields: [turmasId], references: [idTurma])
+  turmasId      String?
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @default(now())
+
+  @@map("Avaliacoes")
+}
+
+model Pagamento {
+  idPagamento   String   @id @default(uuid())
+  data_validade DateTime
+  status        Boolean  @default(false)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @default(now())
+  Aluno         Aluno?   @relation(fields: [alunosId], references: [idAluno])
+  alunosId      String?
+
+  @@map("Pagamentos")
+}
+
+model Matricula {
+  idMatricula      String         @id @default(uuid())
+  n_matricula      Int            @unique
+  nome             String
+  tipo             Tipo_matricula
+  data_matricula   DateTime
+  ano_academico    DateTime       @db.Date()
+  periodo          String
+  recibo_pagamento String         @unique
+  status           Boolean        @default(false)
+  createdAt        DateTime       @default(now())
+  updatedAt        DateTime       @default(now())
+  Aluno            Aluno?         @relation(fields: [alunosId], references: [idAluno])
+  alunosId         String?
+
+  @@map("Matriculas")
+}
+
+enum Tipo_matricula {
+  Novo
+  Confirmacao
+  Transferencia
+}
