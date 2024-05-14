@@ -4,15 +4,58 @@
   box-sizing: border-box;
   scroll-behavior: smooth;
 }
+a{
+  text-decoration: none;
+}
 
 :root{
   --color-1: #012D4E;
   --color-2: #D4DDE7;
   --color-3: #00D8C3;
   --color-4: #081854;
-  --color-4: #6B6E70;
-  --color-4: #DEE5E8;
-  --color-5: #3F3D56;
-  --color-6: #007BFF;
-  --color-7: #259C40;
+  --color-5: #6B6E70;
+  --color-6: #DEE5E8;
+  --color-7: #3F3D56;
+  --color-8: #007BFF;
+  --color-9: #259C40;
 }
+
+
+
+/* Titles */
+h5{
+  color: var(--color-6);
+}
+
+.bg-primary{
+  background-color: var(--color-1)  !important;
+}
+
+.bg-secondary{
+  background-color: var(--color-2) !important;
+}
+
+
+/* Buttons */
+
+.btn-primary{
+  color: var(--color-4) !important;
+  background-color: var(--color-3) !important;
+}
+
+
+/* Colors text */
+
+.text-primary{
+  color: var(--color-5) !important;
+}
+
+.h-100vh{
+  min-height: 100vh;
+}
+
+/* imgs */
+.logo-access{
+  width: 8.5rem;
+}
+
