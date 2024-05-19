@@ -10,7 +10,7 @@ a{
 
 :root{
   --color-1: #012D4E;
-  --color-2: #D4DDE7;
+  --color-2: #d4dde7;
   --color-3: #00D8C3;
   --color-4: #081854;
   --color-5: #6B6E70;
@@ -18,6 +18,7 @@ a{
   --color-7: #3F3D56;
   --color-8: #007BFF;
   --color-9: #259C40;
+  --border: border: 1px solid var(--color-3);
 }
 
 
@@ -32,8 +33,13 @@ h5{
 }
 
 .bg-secondary{
-  background-color: var(--color-2) !important;
+  background-color: #dddddd !important;
 }
+
+.bg-purple{
+  background-color: var(--color-7);
+}
+
 
 
 /* Buttons */
@@ -41,6 +47,15 @@ h5{
 .btn-primary{
   color: var(--color-4) !important;
   background-color: var(--color-3) !important;
+  border: none !important;
+  width: 10rem;
+  margin: 2rem 0;
+  font-weight: 700;
+}
+
+.btn:hover{
+  background-color: none;
+  border: 1px solid var(--color-3);
 }
 
 

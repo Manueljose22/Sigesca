@@ -1,0 +1,19 @@
+.container{
+    height: 23rem;
+}
+
+.container h4{
+    text-align: center;
+    width: 9.5rem;
+    border-bottom: 4px solid #00D8C3;
+}
+
+.main_text{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container img{
+    height: 10rem;
+}

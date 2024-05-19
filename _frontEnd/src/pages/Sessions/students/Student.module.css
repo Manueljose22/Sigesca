@@ -1,0 +1,43 @@
+
+.container img{
+    width: 20rem;
+}
+
+.containerRow{
+    /* background: !important; */
+    border-radius: 2rem;
+    width: 85%;
+    margin: auto auto;
+}
+
+.containerRow > div:nth-child(2){
+    border-radius: 3rem 2rem 2rem 3rem;
+}
+.containerRow > div:nth-child(1){
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-bottom-right-radius: 3rem;
+}
+
+.logoImg {
+    position: absolute;
+    top: 17%;
+    left: 10%;
+}
+
+.logoImg img{
+   width: 6rem;
+}
+/* 
+.circulo{
+    position: absolute;
+    bottom: 5rem ;
+    border-radius: 0rem 0rem 3rem 3rem ;
+    left: 46.8%;
+    width: 3rem;
+    height: 4rem;
+    transform: rotate(-0deg);
+    background-color: #fff ;
+} */

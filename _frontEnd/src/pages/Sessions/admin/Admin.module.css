@@ -1,0 +1,34 @@
+
+.container img{
+    height: 16.34rem;
+    width: 20rem;
+}
+
+.containerRow{
+    /* background: !important; */
+    border-radius: 2rem;
+    width: 85%;
+    margin: auto auto;
+}
+
+.containerRow > div:nth-child(2){
+    border-radius: 3rem 2rem 2rem 3rem;
+}
+.containerRow > div:nth-child(1){
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-bottom-right-radius: 3rem;
+}
+
+.logoImg {
+    position: absolute;
+    top: 17%;
+    left: 10%;
+}
+
+.logoImg img{
+    height: 6rem;
+   width: 6rem;
+}
