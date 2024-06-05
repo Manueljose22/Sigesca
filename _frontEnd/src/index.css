@@ -28,13 +28,20 @@ h5{
   color: var(--color-6);
 }
 
+.h5{
+  color: var(--color-7);
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
 .bg-primary{
   background-color: var(--color-1)  !important;
 }
 
 .bg-secondary{
-  background-color: #dddddd !important;
+  background-color: var(--color-6) !important;
 }
+
 
 .bg-purple{
   background-color: var(--color-7);
@@ -58,7 +65,10 @@ h5{
   border: 1px solid var(--color-3);
 }
 
-
+.btn-success{
+  background-color: var(--color-9)  !important;
+  padding: .4rem 1rem;
+}
 /* Colors text */
 
 .text-primary{
@@ -72,5 +82,12 @@ h5{
 /* imgs */
 .logo-access{
   width: 8.5rem;
+}
+
+/* Gestão acedemica */
+
+.title-h4{
+  font-weight: 600;
+  color: var(--color-4);
 }
 

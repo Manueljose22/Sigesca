@@ -1,25 +1,32 @@
-// import { Request, Response } from "express";
-// import { StudentsRepository } from "../../repositories/StudentsRepository";
-// import { GetStundentsService } from "../../services/students/GetStundentsService";
+import { Request, Response } from "express";
+import { StudentsRepository } from "../../repositories/StudentsRepository";
+import { GetStundentsService } from "../../services/students/GetStundentsService";
 
 
 
-// class GetStudentsController {
-    
-//     async  handle(request: Request, resposne: Response){
-//         const {id} = request.params;
+class GetStudentsController {
 
-//         const studentRepository = new StudentsRepository();
-//         const getStundentsService = new GetStundentsService(studentRepository);
+    async handle(request: Request, resposne: Response) {
+        
+        const { id } = request.params;
 
-//         const result = await getStundentsService.execute(id);
+        try {
 
-//         if (result instanceof Error) {
-//             return resposne.status(400).json({message: result.message});
-//         }
+            const studentRepository = new StudentsRepository();
+            const service = new GetStundentsService(studentRepository);
 
-//         return resposne.status(200).json(result);
-//     }
-// }
+            const result = await service.execute(id);
 
-// export default new GetStudentsController;
+            return resposne.status(200).json(result);
+
+        } catch (error: any) {
+
+            return resposne.status(400).json({ message: error.message });
+        }
+
+
+
+    }
+}
+
+export default new GetStudentsController;

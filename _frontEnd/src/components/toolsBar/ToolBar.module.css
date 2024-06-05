@@ -1,0 +1,41 @@
+.container{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.container span{
+    color: var(--color-8) !important;
+    font-weight: 500;
+}
+
+.container p {
+    color: var(--color-5) !important;
+    font-weight: 500;
+}
+
+.container h5 {
+    color: var(--color-4) !important;
+    font-weight: 600;
+}
+
+.container button{
+    border: none;
+    border-radius: .3rem;
+    background-color: transparent;
+    padding: .4rem 1rem;
+    box-shadow: 0 0 2px #acaaaacc;
+    font-weight: 500;
+    align-items: center;
+    
+}
+
+.container button:nth-child(1){
+    background-color: #f2f2f2;
+    color: var(--color-4) !important;
+}
+
+.container button:nth-child(2){
+    background-color: var(--color-4);
+    color: #fff;
+}

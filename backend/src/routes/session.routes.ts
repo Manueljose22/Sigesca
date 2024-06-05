@@ -1,11 +1,11 @@
-// import { Router } from "express";
-// import SessionController from "../controllers/session/SessionController";
+import { Router } from "express";
+import SessionController from "../controllers/session/SessionController";
 
 
 
-// const router = Router();
+const router = Router();
 
-// router.post('/login', SessionController.handle);
+router.post('/session', SessionController.handle);
 
 
-// export { router as sessionRouter }
+export { router as sessionRouter }

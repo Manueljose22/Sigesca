@@ -30,12 +30,22 @@
 }
 
 a, li{
-    color: #fff;
+    color: #fff !important;
     font-weight: 500;
     cursor: pointer;
 }
 
-a:hover{
+/* a:hover{
     transition: all .30s ease-in-out;
     color: var(--color-3);
+} */
+
+
+.bg_active {
+    background-color: var(--color-5);
+    border-radius: .1rem;
+    padding: .5rem 0;
+    border-left: .4rem solid var(--color-3);
 }
+
+

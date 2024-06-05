@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 
-import CardLogin from "../components/card/CardLogin";
+import CardLogin from "../components/card/FormLogin";
 import AdminImg from "../../../../public/illustrations/admin.svg";
 import logoImg from '../../../../public/logo-components/logoA.png';
 import styles from "./Admin.module.css";

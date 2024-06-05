@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { IDashboardProps } from "./types";
 import {SideBar} from "../../components/Layout/sidebar/SideBar";
 
 import styles from './Dashboard.module.css';
@@ -24,7 +23,7 @@ function Dashboard() {
           <main className={styles.main}>
             <NavBar toggleSidebar={toggleSidebar} />
             
-            <section className='p-4'>
+            <section className='py-4 px-5 container bg-secondary h-100vh'>
                 <Outlet />
             </section>
           </main>

@@ -1,0 +1,34 @@
+.container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container img{
+    width: 3rem;
+    clip-path: circle(35%);
+    
+}
+
+.avatar{
+    width: 3rem;
+    height: 3rem;
+    border: 1px solid #ddd;
+    border-radius: 100%;
+}
+
+.container button{
+    background-color: transparent;
+    border: none;
+}
+
+.container span {
+    color: var(--color-4);
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+.container svg{
+    color: var(--color-4);
+    margin-right: 2rem;
+}

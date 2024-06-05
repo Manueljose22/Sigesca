@@ -1,22 +1,22 @@
-// import { IStudentRepository, StundentSave } from "../../repositories/IStudentsRepository";
+import { IStudentsRepository, saveStudent } from "../../repositories/IStudentsRepository";
 
 
 
-// class GetStundentsService {
+class GetStundentsService {
 
-//     constructor(private studentRepository: IStudentRepository) { }
+    constructor(private studentRepository: IStudentsRepository) { }
 
-//     async execute(id: string): Promise<StundentSave | Error> {
+    async execute(id: string): Promise<saveStudent | Error> {
 
-//         const student = await this.studentRepository.findById(id);
+        const student = await this.studentRepository.findById(id);
 
-//         if (!student) {
-//             return new Error('Estudante inválido!');
-//         }
+        if (!student) {
+            throw new Error('Estudante inválido!');
+        }
 
-//         return student
+        return student
 
-//     }
-// }
+    }
+}
 
-// export { GetStundentsService }
+export { GetStundentsService }

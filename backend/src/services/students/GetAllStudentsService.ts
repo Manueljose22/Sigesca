@@ -1,18 +1,18 @@
-// import { IStudentRepository, StundentSave } from "../../repositories/IStudentsRepository";
+import { IStudentsRepository, saveStudent } from "../../repositories/IStudentsRepository";
 
 
 
-// class GetAllStundentsService {
+class GetAllStundentsService {
 
-//     constructor(private studentRepository: IStudentRepository) { }
+    constructor(private studentRepository: IStudentsRepository) { }
 
-//     async execute(): Promise<StundentSave | null> {
+    async execute(): Promise<saveStudent[] | null> {
 
-//         const student = await this.studentRepository.findAll();
+        const students = await this.studentRepository.findAlls();
 
-//         return student
+        return students;
 
-//     }
-// }
+    }
+}
 
-// export { GetAllStundentsService }
+export { GetAllStundentsService }

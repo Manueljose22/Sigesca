@@ -1,0 +1,8 @@
+.container h4{
+    color: var(--color-4) !important;
+    font-weight: 600;
+}
+
+.container p {
+    color: var(--color-5) !important;
+}

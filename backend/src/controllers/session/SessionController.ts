@@ -1,26 +1,29 @@
-// import { Request, Response } from "express";
-// import { UserRepository } from "../../repositories/userRepository";
-// import { SessionService } from "../../services/session/SessionService";
+import { Request, Response } from "express";
+import { SessionRepository } from "../../repositories/SessionRepository";
+import { SessionService } from "../../services/session/SessionService";
 
 
 
-// class SessionController {
 
-//     async handle(request: Request, response: Response) {
+class SessionController {
 
-//         const {nome, senha} = request.body;
-
-//         const userRepository = new UserRepository();
-//         const sessionService = new SessionService(userRepository);
-
-//         const result = await sessionService.excute({nome, senha});
+    async handle(request: Request, response: Response) {
+        const { code, password } = request.body as {code: number, password: string};
+     
         
-//         if (result instanceof Error) {
-//             return response.status(400).json({message: result.message});
-//         }
+        try {
 
-//         return response.status(201).json(result);
-//     }
-// }
+            const sessionRepository = new SessionRepository();
+            const service = new SessionService(sessionRepository);
 
-// export default new SessionController;
+            const result = await service.excute({ codigo: code, senha: password });
+
+            return response.status(201).json(result);
+
+        } catch (error: any) {
+            return response.status(400).json({ message: error.message })
+        }
+    }
+}
+
+export default new SessionController;

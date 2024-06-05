@@ -1,46 +1,54 @@
-// import { sign } from "jsonwebtoken";
-// import { IUserRepository } from "../../repositories/IUserRepository";
-// import { compare } from "bcrypt";
-// import * as dotenv from "dotenv";
-// dotenv.config()
+import { sign } from "jsonwebtoken";
+import { ISessionRepository} from "../../repositories/ISessionRepository";
+import { compare } from "bcrypt";
+import * as dotenv from "dotenv";
+dotenv.config()
 
 
 
-// export type SessionRequest = {
-//     nome: string;
-//     senha: string
-// }
+export type SessionRequest = {
+    codigo: number;
+    senha: string;
+}
 
-// class SessionService {
+class SessionService {
 
-//     constructor(private userRepository: IUserRepository) {
+    constructor(private userRepository: ISessionRepository) {
 
-//     }
+    }
 
-//     async excute({ nome, senha }: SessionRequest) {
+    async excute({ codigo, senha }: SessionRequest) {
 
-//         const userExists = await this.userRepository.findUserByName(nome);
+        if (!codigo) {
+            throw new Error('Informe o código de acesso!')
+            
+        } else if (!senha) {
+            throw new Error('Informe a senha!')
 
-//         if (!userExists) {
-//             return new Error('Usuario inválido, por favor cadastra-se!');
-//         }
+        }
+
+        const userExists = await this.userRepository.findAccessCode(codigo);
+
+        if (!userExists) {
+            throw new Error('Não existe usuário com essas credencias!');
+        }
 
 
-//         const isMatch = await compare(senha, userExists.senha)
+        const isMatch = await compare(senha, userExists.senha)
 
-//         if (!isMatch) {
-//             return new Error('Senha incorreta!');
-//         }
+        if (!isMatch) {
+            throw new Error('Senha incorreta!');
+        }
 
-//         const token = sign({
+        const token = sign({
 
-//             id: userExists.id, 
-//             name: userExists.nome 
+            id: userExists.alunoId || userExists.professorId, 
+            nivelAcesso: userExists.nivelAcesso 
                
-//         }, String(process.env.SECRET_JWT))
+        }, String(process.env.SECRET_JWT))
 
-//         return {token}
-//     }
-// }
+        return {token}
+    }
+}
 
-// export { SessionService }
+export { SessionService }

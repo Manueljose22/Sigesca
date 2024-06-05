@@ -4,10 +4,10 @@ import styles from './Button.module.css';
 
 
 
-function ButtonLink({ url, textButton, icon, colorScheme }: buttonProps) {
+function ButtonLink({ url, textButton, icon, colorScheme, iconRight }: buttonProps) {
   return (
     <Link className={`${styles[colorScheme]}`} to={url}>
-      {icon} &nbsp;{textButton}
+      {icon} &nbsp;{textButton}  &nbsp; {iconRight}
     </Link>
   );
 }

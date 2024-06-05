@@ -1,7 +1,9 @@
+import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
+
 import styles from './SideBar.module.css';
-import {FaAngleDown,FaAngleRight,FaUser, FaUserGraduate } from 'react-icons/fa';
-import { BiSolidDashboard } from 'react-icons/bi';
+import {FaAngleRight,FaUser, FaUserGraduate } from 'react-icons/fa';
+import { BiSolidDashboard, BiSolidHome } from 'react-icons/bi';
 import { ISideBarProps } from './types';
 import logoImg from '../../../../public/logo-components/logo.png';
 import { FaChalkboardUser, FaGear } from 'react-icons/fa6';
@@ -10,79 +12,87 @@ import { FaChalkboardUser, FaGear } from 'react-icons/fa6';
 
 
 function SideBar({isOpen}: ISideBarProps) {
+
+  const [isActive, setActive] = useState<number | null>(null);
+
+  const handleClick = (index: number)=>{
+
+    setActive(index);
+
+  }
+
   return (
     <aside id='' className={`${styles.sidebar} ${styles[isOpen]}`}>
         <li className='list-unstyled fs-3 py-3 px-4'>
-            <img className='' src={logoImg} alt="sigesca" /> SIGESCA
+            <img className='' src={logoImg} alt="sigesca" /> 
+            SIGESCA
         </li>
 
+       <div className="px-4 fw-3 my-3 border-bottom-sm ">
+          <BiSolidHome className='me-2' /> 
+          Painel
+       </div>
        <nav className='mt-3 px-4'>
-          <li className='pointer list-unstyled d-flex align-items-center mb-3' data-bs-toggle='collapse' data-bs-target='#dropdown'>
-            <BiSolidDashboard className='me-2' /> Gestão Acadêmica <FaAngleDown/>
+          <li onClick={() => handleClick(1)} className={` ${isActive === 1 ? styles.bg_active : ''} pointer list-unstyled d-flex align-items-center mb-3'`}>
+            <Link to={'/dashboard/management'} >
+              <BiSolidDashboard className='me-2' /> Gestão geral <FaAngleRight/>
+            </Link>
           </li>
-          <ul id='dropdown' className={`${styles.bg_dropdown} list-unstyled collapse bg-dropdown mt-1 py-2`}>
-            <li className='mb-2 list-unstyled d-flex align-items-center'>
-              <Link to={'/course'}><FaAngleRight/> Ano Lectivo</Link>
-            </li>
-            <li className='mb-2 list-unstyled d-flex align-items-center'>
-              <Link to={'/course'}><FaAngleRight/> Cursos</Link>
-            </li>
-            <li className='mb-2 list-unstyled d-flex align-items-center'>
-              <Link to={'/level'}><FaAngleRight/> Nível Acadêmico</Link>
-            </li>
-            <li className='mb-2 d-flex align-items-center'>
-              <Link to={'/disciplina'}><FaAngleRight/> Disciplinas</Link>
-            </li>
-            <li className='mb-2 d-flex align-items-center'>
-              <Link to={'/epoca'}><FaAngleRight/> Epocas</Link> 
-            </li>
-            <li className='mb-2 d-flex align-items-center'>
-              <Link to={'/classroom'}><FaAngleRight/> Turmas</Link>
-            </li>
-            <li className='mb-2 d-flex align-items-center'>
-              <Link to={'/classroom'}><FaAngleRight/> Salas</Link>
-            </li>
-            <li className='mb-2 d-flex align-items-center'>
-              <Link to={'/matricula'}><FaAngleRight/> Matriculas</Link>
-            </li>
-          </ul>
 
 
-          <li className={`${styles.btn_down} d-flex align-items-center mb-3  list-unstyled collapsed pointer align-items-center mt-2`} data-bs-toggle='collapse' data-bs-target='#sidebar-student'>
-            <FaUserGraduate className='me-2' /> Alunos <FaAngleDown/>
+          {/* Students */}
+
+          <li onClick={() => handleClick(2)} 
+              className={` ${ isActive === 2 ? styles.bg_active : '' }  
+              ${styles.btn_down} d-flex align-items-center mb-3  list-unstyled collapsed pointer align-items-center mt-2`} >
+
+              <Link to={'/dashboard/students'}> 
+                <FaUserGraduate className='me-2' /> 
+                  Alunos 
+                <FaAngleRight/> 
+              </Link>
           </li>
-          <ul id='sidebar-student' className={`${styles.bg_dropdown} list-unstyled align-items-center collapse bg-dropdown mt-1 py-2`}>
-            <li className='mb-2 d-flex align-items-center '>
-              <Link to={'#'}><FaAngleRight/> Cadastrar</Link>
-            </li>
         
-          </ul>
-          <li className={`${styles.btn_down} d-flex align-items-center mb-3 list-unstyled collapsed pointer align-items-center mt-2`} data-bs-toggle='collapse' data-bs-target='#sidebar-teacher'>
-            <FaChalkboardUser className='me-2' /> Professores <FaAngleDown/>
-          </li>
-          <ul id='sidebar-teacher' className={`${styles.bg_dropdown}   list-unstyled align-items-center collapse bg-dropdown mt-1 py-2`}>
-            <li className='mb-2 d-flex align-items-center'>
-              <Link to={'/users'}><FaAngleRight/> Cadastrar</Link>
-            </li>
-        
-          </ul>
+          {/* Teachers */}
 
-          <li className={`${styles.btn_down} d-flex align-items-center mb-3 list-unstyled collapsed pointer align-items-center mt-2`} data-bs-toggle='collapse' data-bs-target='#sidebar-admin'>
-            <FaUser className='me-2' /> Administradores <FaAngleDown/>
-          </li>
-          <ul id='sidebar-admin' className={`${styles.bg_dropdown}   list-unstyled align-items-center collapse bg-dropdown mt-1 py-2`}>
-            <li className='mb-2 d-flex align-items-center'>
-              <Link to={'/users'}><FaAngleRight/> Cadastrar</Link>
-            </li>
         
-          </ul>
+          <li onClick={() => handleClick(3)} 
+              className={` ${isActive === 3 ? styles.bg_active : ''} ${styles.btn_down} 
+              d-flex align-items-center mb-3 list-unstyled collapsed pointer align-items-center mt-2`} 
+              >
+              <Link to={'/dashboard/admin/teachers'}>
+                <FaChalkboardUser className='me-2' /> 
+                  Professores 
+                <FaAngleRight/>
+              </Link>
+          </li>
 
+          
+          {/* Admin */}
+
+          <li onClick={() => handleClick(4)} 
+            className={` ${isActive === 4 ? styles.bg_active : ''} ${styles.btn_down}
+             d-flex align-items-center mb-3 list-unstyled collapsed pointer align-items-center mt-2`} >
+            
+            <Link to={'/dashboard/admin/users'}> 
+              <FaUser className='me-2' /> 
+                Administradores 
+              <FaAngleRight/>
+            </Link>
+            
+          </li>
+          
+        {/* configuration */}
 
           <li className='my-2 list-unstyled d-flex align-items-center'>
-              <Link to={'/config'}> <FaGear /> Configurações</Link>
+              <Link to={'/dashboard/admin/configuration'}> 
+                <FaGear /> 
+                  Configurações
+                </Link>
           </li>
          
        </nav>
+       
     </aside>
   )
 }

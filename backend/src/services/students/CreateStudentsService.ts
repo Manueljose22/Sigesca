@@ -1,3 +1,4 @@
+import { hash } from 'bcrypt';
 import { IStudentsRepository } from '../../repositories/IStudentsRepository';
 
 
@@ -5,22 +6,25 @@ import { IStudentsRepository } from '../../repositories/IStudentsRepository';
 export type StudentRequest = {
     n_matricula: number;
     nome: string;
-    data_inscricao: Date;
     documento: string;
     numero_bi: string;
     bi_validade: string;
     nacionalidade: string;
+    naturalidade: string;
+    data_nascimento: string;
+    pdc: string;
     genero: string;
     telefone: string;
     email: string;
     foto: string;
     nome_pai: string;
     nome_mae: string;
-    telefonePai: string
+    telefoneResponsavel: string
     municipio:  string
     bairro:   string
     rua: string
     casa: string
+    senha: string;
     
 }
 
@@ -32,24 +36,16 @@ class CreateStudentsService {
 
         data.n_matricula = this.geratorNumber();
 
-        // const studentExists = await this.studentRepository.findByMatricula(data.n_matricula);
+        const studentExists = await this.studentRepository.findByBI(data.numero_bi);
 
         if (studentExists) {
-            return new Error('Estudante já existe!')
+            throw new Error('Estudante já existe!')
         }
 
-        if (!data.bi_validade || !data.data_inscricao || !data.email ||
-            !data.genero || !data.nacionalidade
-            || !data.nome || !data.numero_bi || !data.telefone) {
+        const passHash = await hash('sigesca', 12);
+        data.senha = passHash;
 
-            return new Error('Por favor, preencha todos os campos!')
-
-        }
-
-        console.log(data.foto);
-        
-
-        // await this.studentRepository.save(data);
+        await this.studentRepository.save(data);
 
     }
 

@@ -1,8 +1,11 @@
+import React from "react";
+
 export interface buttonProps{
     url: string;
     textButton: string;
-    icon: React.ReactNode;
+    icon?: React.ReactNode;
     colorScheme: string;
+    iconRight?: React.ReactNode;
 }
 
 export interface submitProps{
