@@ -1,5 +1,6 @@
 import { Container } from "../../components/containers/Container";
-import { PeriodsForm } from "./components/cards/PeriodsForm";
+import { TableView } from "../../components/Ui/table/TableView";
+import { PeriodsForm } from "./components/form/PeriodsForm";
 
 
 
@@ -14,7 +15,7 @@ function PeriodsManagement() {
             textBtnDetails={'Períodos'}
 
             
-            showDetails={'Ver'}
+            showDetails={<TableView />}
 
 
             addNew={<PeriodsForm />}

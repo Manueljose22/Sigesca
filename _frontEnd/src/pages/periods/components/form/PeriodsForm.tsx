@@ -2,7 +2,11 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import Input from "../../../../components/Ui/input/Input";
 import { Select } from "../../../../components/Ui/select/Select";
-import { IPeriods } from "./types";
+import { IPeriods } from "../../../../services/periods/types";
+import { PeriodsService } from "../../../../services/periods/PeriodsService";
+import { ApiException } from "../../../../utils/api/ApiException";
+import { setMessageAlert } from "../../../../utils/message/setMessageAlert";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -12,9 +16,10 @@ export function PeriodsForm() {
 
     const [periods, setPeriods] = useState<IPeriods>({} as IPeriods);
     const [status, setStatus] = useState('');
+    const navigate = useNavigate();
 
 
-    
+
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         e.preventDefault()
@@ -23,17 +28,33 @@ export function PeriodsForm() {
 
 
     const handleSelect = (e: ChangeEvent<HTMLSelectElement>) => {
-        setStatus( e.target.options[e.target.selectedIndex].text );
+        setStatus(e.target.options[e.target.selectedIndex].text);
     }
 
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        console.log(periods);
-        console.log(status);
+        const data: IPeriods = {
+            id: '',
+            year: periods.year,
+            dateStar: periods.dateStar,
+            dateEnd: periods.dateEnd,
+            status: status
+        }
 
-    };  
+        PeriodsService.create(data).then(response => {
+            
+            if (response instanceof ApiException) {
+                setMessageAlert({ title: '', msg: response.message, type: 'Error' });
+            }
+        })
+
+        // navigate('/periods')
+        console.log('clicou');
+
+        
+    };
 
 
     return (

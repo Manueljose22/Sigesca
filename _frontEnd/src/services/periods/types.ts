@@ -8,5 +8,5 @@ export interface IPeriods{
    year: string;
    dateStar: string;
    dateEnd: string;
-   status: boolean;
+   status: string;
 }
