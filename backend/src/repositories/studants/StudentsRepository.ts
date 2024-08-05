@@ -1,6 +1,6 @@
 import { Aluno } from "@prisma/client";
-import { prismaClient } from "../db/prismaClient";
-import { StudentRequest } from "../services/students/CreateStudentsService";
+import { prismaClient } from "../../db/prismaClient";
+import { StudentRequest } from "../../services/students/CreateStudentsService";
 import { IStudentsRepository, saveStudent } from "./IStudentsRepository";
 
 

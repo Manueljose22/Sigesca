@@ -4,9 +4,9 @@
 
 
 export interface IPeriods{
-   id: string;
+   idPeriod: string;
    year: string;
-   dateStar: string;
+   dateStart: string;
    dateEnd: string;
    status: string;
 }

@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { CreateStudentsService } from "../../services/students/CreateStudentsService";
-import { StudentsRepository } from "../../repositories/StudentsRepository";
+import { StudentsRepository } from "../../repositories/studants/StudentsRepository";
 
 
 class CreateStudentsController {

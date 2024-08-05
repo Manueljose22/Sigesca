@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { PeriodsRepository } from '../../repositories/PeriodsRepository';
+import { PeriodsRepository } from '../../repositories/periods/PeriodsRepository';
 import { CreatePeriodsService } from '../../services/periods/CreatePeriodsService';
 
 
@@ -9,7 +9,7 @@ class CreatePeriodsController {
 
     async handle(request: Request, response: Response) {
 
-        let { ano, data_inicio, data_fim, status } = request.body;
+        let { year, dateStart, dateEnd, status } = request.body;
 
         if (status === 'Activo') {
             status = true;
@@ -22,7 +22,7 @@ class CreatePeriodsController {
             const periodsRepository = new PeriodsRepository();
             const servive = new CreatePeriodsService(periodsRepository);
 
-            const result = await servive.execute({ ano, data_inicio, data_fim, status });
+            const result = await servive.execute({ year, dateStart, dateEnd, status });
 
             return response.json({ message: 'Periodo registrado com sucesso!' });
 

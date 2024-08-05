@@ -1,12 +1,10 @@
 import { Container } from "../../components/containers/Container";
-import { TableView } from "../../components/Ui/table/TableView";
+import { TableView } from "./components/table/TableView";
 import { PeriodsForm } from "./components/form/PeriodsForm";
 
 
 
 function PeriodsManagement() {
-
-    
 
     return (
         <Container

@@ -180,7 +180,7 @@ model Turma {
   curso            Curso?          @relation(fields: [cursosId], references: [idCurso])
   nivel            Nivel?          @relation(fields: [niveisId], references: [idNivel])
   Sala             Sala?           @relation(fields: [salaId], references: [idSala])
-  Periodo_letivo   Periodo_letivo? @relation(fields: [periodo_letivoId], references: [idPeriodo])
+  Periodo_letivo   Periodo_letivo? @relation(fields: [periodo_letivoId], references: [idPeriod])
   avalicao         Avaliacao[]
   Matricula        Matricula[]
 
@@ -188,10 +188,10 @@ model Turma {
 }
 
 model Periodo_letivo {
-  idPeriodo   String      @id @default(uuid())
-  ano         String
-  data_inicio DateTime    @db.Date()
-  data_fim    DateTime    @db.Date()
+  idPeriod   String      @id @default(uuid())
+  year         String
+  dateStart    DateTime    @db.Date()
+  dateEnd    DateTime    @db.Date()
   status      Boolean     @default(value: false)
   createdAt   DateTime    @default(now()) @map("created_at")
   updatedAt   DateTime    @default(now()) @map("updated_at")
@@ -212,7 +212,7 @@ model Matricula {
   updatedAt        DateTime        @default(now()) @map("updated_at")
   Aluno            Aluno?          @relation(fields: [alunosId], references: [idAluno])
   Turma            Turma?          @relation(fields: [turmaId], references: [idTurma])
-  Periodo_letivo   Periodo_letivo? @relation(fields: [periodo_letivoId], references: [idPeriodo])
+  Periodo_letivo   Periodo_letivo? @relation(fields: [periodo_letivoId], references: [idPeriod])
 
   @@map("Matriculas")
 }

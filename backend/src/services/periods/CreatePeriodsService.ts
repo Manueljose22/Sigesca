@@ -1,12 +1,12 @@
-import { IPeriodsRepository } from "../../repositories/IPeriodsRepository";
+import { IPeriodsRepository } from "../../repositories/periods/IPeriodsRepository";
 
 
 
 export type periodsRequest = {
-    idPeriodo: string;
-    ano: string;
-    data_inicio: Date;
-    data_fim: Date;
+
+    year: string;
+    dateStart: Date;
+    dateEnd: Date;
     status: boolean;
 }
 
@@ -15,15 +15,26 @@ class CreatePeriodsService {
 
     constructor(private periodsRepository: IPeriodsRepository) { }
 
-    async execute({ ano, data_inicio, data_fim, status }: Omit<periodsRequest, 'idPeriodo'>): Promise<void | Error> {
+    async execute({ year, dateStart, dateEnd, status }: periodsRequest): Promise<void | Error> {
 
-        const period = await this.periodsRepository.findByYear(ano);
+        const period = await this.periodsRepository.findByYear(year);
 
         if (period) {
-            throw new Error('Periodo já registrado'!);
+            throw new Error('Periodo já registrado');
         }
 
-        await this.periodsRepository.save({ ano, data_inicio: new Date(data_inicio), data_fim: new Date(data_fim), status })
+        if (!year || !dateStart || !dateEnd) {
+
+            throw new Error('Por favor preecha todos os campos!')
+        }
+
+        if (year < new Date().getFullYear().toString() || year !== new Date(dateStart).getFullYear().toString()
+            || year !== new Date(dateEnd).getFullYear().toString()) {
+
+            throw new Error('Data inválida, tente novamente!');
+        }
+
+        await this.periodsRepository.save({ year, dateStart: new Date(dateStart), dateEnd: new Date(dateEnd), status })
     }
 }
 

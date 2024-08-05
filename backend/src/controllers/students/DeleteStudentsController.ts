@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { StudentsRepository } from '../../repositories/StudentsRepository';
+import { StudentsRepository } from '../../repositories/studants/StudentsRepository';
 import { DeleteStudentsservice } from '../../services/students/DeleteStudentsservice';
 
 

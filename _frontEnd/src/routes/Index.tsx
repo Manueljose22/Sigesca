@@ -28,15 +28,19 @@ export function Index() {
             <Route path={"/session/student"} element={<Student />} />
 
             <Route path={'/dashboard'} element={<PrivateRoute>
+            
               <Dashboard />
             </PrivateRoute>} />
-            <Route path={"/dashboard"} element={<Dashboard />} >
-              <Route path={"/dashboard/course"} element={<Course />} />
-              <Route path={"/dashboard/management"} element={<GeneralManagement />} />
-              <Route path={"/dashboard/periods"} element={<PeriodsManagement />} />
-            </Route>
+            
+              <Route path={"/dashboard"} element={<Dashboard />} >
+                <Route path={"/dashboard/course"} element={<Course />} />
+                <Route path={"/dashboard/management"} element={<GeneralManagement />} />
+                <Route path={"/dashboard/periods"} element={<PeriodsManagement />} />
+              </Route>
+            
 
             <Route path={"*"} element={<NotFound />} />
+
           </Routes>
         </ProviderUserContext>
       </BrowserRouter>

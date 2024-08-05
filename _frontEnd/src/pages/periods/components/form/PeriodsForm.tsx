@@ -1,12 +1,12 @@
 
 import { ChangeEvent, FormEvent, useState } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import Input from "../../../../components/Ui/input/Input";
 import { Select } from "../../../../components/Ui/select/Select";
 import { IPeriods } from "../../../../services/periods/types";
 import { PeriodsService } from "../../../../services/periods/PeriodsService";
 import { ApiException } from "../../../../utils/api/ApiException";
 import { setMessageAlert } from "../../../../utils/message/setMessageAlert";
-import { useNavigate } from "react-router-dom";
 
 
 
@@ -22,7 +22,6 @@ export function PeriodsForm() {
 
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-        e.preventDefault()
         setPeriods({ ...periods, [e.target.name]: e.target.value });
     }
 
@@ -32,27 +31,24 @@ export function PeriodsForm() {
     }
 
 
-    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         const data: IPeriods = {
-            id: '',
+            idPeriod: '',
             year: periods.year,
-            dateStar: periods.dateStar,
+            dateStart: periods.dateStart,
             dateEnd: periods.dateEnd,
             status: status
         }
 
-        PeriodsService.create(data).then(response => {
-            
-            if (response instanceof ApiException) {
-                setMessageAlert({ title: '', msg: response.message, type: 'Error' });
-            }
-        })
+        const result = await PeriodsService.create(data)
 
-        // navigate('/periods')
-        console.log('clicou');
+        if (result instanceof ApiException) {
+            setMessageAlert({ title: '', msg: result.message, type: 'error' });
+        }
 
+        navigate('/dashboard/periods');
         
     };
 

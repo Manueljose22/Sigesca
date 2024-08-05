@@ -17,7 +17,7 @@ function Student() {
       </div>
       <div className={`${styles.containerRow} row d-flex justify-content-center align-items-center  bg-white`}>
         <div className="col-lg-6 col-md-6 align-items-center">
-          <div>
+          <div className={styles.containerImg}>
             <img className="img-fluid" src={StudentImg} alt="ilustração aluno" />
           </div>
           <div className="gap-2 mt-5">

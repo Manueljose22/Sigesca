@@ -1,5 +1,5 @@
 import { sign } from "jsonwebtoken";
-import { ISessionRepository} from "../../repositories/ISessionRepository";
+import { ISessionRepository} from "../../repositories/session/ISessionRepository";
 import { compare } from "bcrypt";
 import * as dotenv from "dotenv";
 dotenv.config()
@@ -7,8 +7,8 @@ dotenv.config()
 
 
 export type SessionRequest = {
-    codigo: number;
-    senha: string;
+    code: number;
+    password: string;
 }
 
 class SessionService {
@@ -17,24 +17,24 @@ class SessionService {
 
     }
 
-    async excute({ codigo, senha }: SessionRequest) {
+    async excute({ code, password }: SessionRequest) {
 
-        if (!codigo) {
+        if (!code) {
             throw new Error('Informe o código de acesso!')
             
-        } else if (!senha) {
+        } else if (!password) {
             throw new Error('Informe a senha!')
 
         }
 
-        const userExists = await this.userRepository.findAccessCode(codigo);
+        const userExists = await this.userRepository.findAccessCode(code);
 
         if (!userExists) {
             throw new Error('Não existe usuário com essas credencias!');
         }
 
 
-        const isMatch = await compare(senha, userExists.senha)
+        const isMatch = await compare(password, userExists.senha)
 
         if (!isMatch) {
             throw new Error('Senha incorreta!');
@@ -47,7 +47,9 @@ class SessionService {
                
         }, String(process.env.SECRET_JWT))
 
-        return {token}
+        return {
+            token
+        }
     }
 }
 

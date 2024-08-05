@@ -1,5 +1,5 @@
 import { Aluno } from "@prisma/client";
-import { StudentRequest } from "../services/students/CreateStudentsService";
+import { StudentRequest } from "../../services/students/CreateStudentsService";
 
 
 

@@ -1,0 +1,38 @@
+
+.container p, .container select{
+    background-color: #dddd;
+    padding: .3rem .5rem;
+    border-radius: .3rem;
+    color: #252525;
+    font-weight: 600;
+    margin-top: .4rem;
+    width: 100%;
+    border: none;
+}
+
+.container.inative {
+    border-left: 8px solid var(--color-4) ;
+}
+
+.container.active {
+    border-left: 8px solid var(--color-9) ;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header svg {
+    background-color: #dddd;
+    padding: .2rem .4rem;
+    width: 2rem;
+    font-size: 1.7rem;
+    text-align: center;
+    border-radius: .3rem;
+    color: var(--color-5);
+    cursor: pointer;
+    margin-left: 0.5rem;
+}
+

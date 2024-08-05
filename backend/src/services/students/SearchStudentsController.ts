@@ -1,4 +1,4 @@
-import { IStudentsRepository, saveStudent } from "../../repositories/IStudentsRepository";
+import { IStudentsRepository, saveStudent } from "../../repositories/studants/IStudentsRepository";
 
 
 
