@@ -1,5 +1,5 @@
 import { FaArrowAltCircleRight } from "react-icons/fa";
-import ButtonLink from "../../../../components/Ui/Button/ButtonLink"
+import ButtonLink from "../../../../components/Ui/button/ButtonLink"
 import { ICardProps } from "./types";
 import styles from './Card.module.css';
 

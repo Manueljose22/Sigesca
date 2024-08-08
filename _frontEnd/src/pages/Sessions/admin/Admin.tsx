@@ -4,7 +4,7 @@ import CardLogin from "../components/card/FormLogin";
 import AdminImg from "../../../../public/illustrations/admin.svg";
 import logoImg from '../../../../public/logo-components/logoA.png';
 import styles from "./Admin.module.css";
-import ButtonLink from "../../../components/Ui/Button/ButtonLink";
+import ButtonLink from "../../../components/Ui/button/ButtonLink";
 import { FaUser, FaUserGraduate, FaChalkboardUser } from "react-icons/fa6";
 
 

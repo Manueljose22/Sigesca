@@ -20,14 +20,21 @@
 
 .btn_primary{
     width: 100%;
-    padding: .6rem 1rem;
-    color: #fff  !important;
+    padding: .5rem 1rem;
     background-color: var(--color-3);
     border: none !important;
     font-weight: 500;
     border-radius: .4rem;
     transition: all .30s ease-in-out;
     margin: 0 .5rem ;
+}
+
+.text_Color_secondary{
+    color: var(--color-4) !important;
+}
+
+.text_Color_primary{
+    color: #fff !important;
 }
 
 

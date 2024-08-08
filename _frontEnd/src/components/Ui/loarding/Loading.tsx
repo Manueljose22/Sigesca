@@ -1,16 +1,31 @@
-import CircularProgress from '@mui/material/CircularProgress';
-import Box from '@mui/material/Box';
-import styles from './Loarding.module.css'
+import { useState } from 'react';
+import {Spinner} from '@chakra-ui/react'
 
 
 
 
 
 function Loading() {
+
+  const [loading, setLoading] = useState<boolean>(true);
+
+  // setLoading(false)
   return (
-    <Box className={styles.container} sx={{ display: 'flex' }}>
-      <CircularProgress/>
-    </Box>
+    <>
+      {loading &&
+        (
+            <div className="container text-center justify-content-center">
+                <Spinner 
+                    thickness='4px'
+                    speed='0.65s'
+                    emptyColor='gray.200'
+                    color='purple.400'
+                    size='xl'
+                />
+            </div>
+        )
+    }
+    </>
   );
 }
 

@@ -2,7 +2,7 @@ import { ChangeEvent, FormEvent, useState } from "react";
 import styles from './Teacher.module.css';
 import { FaChalkboardUser, FaUser, FaUserGraduate } from "react-icons/fa6";
 import CardLogin from "../components/card/FormLogin";
-import ButtonLink from "../../../components/Ui/Button/ButtonLink";
+import ButtonLink from "../../../components/Ui/button/ButtonLink";
 import logoImg from '../../../../public/logo-components/logoA.png';
 import teacherImg from '../../../../public/illustrations/teacher.svg';
 

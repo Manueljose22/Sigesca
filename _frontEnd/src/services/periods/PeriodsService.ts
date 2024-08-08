@@ -1,12 +1,11 @@
 import { IPeriods } from "./types";
 import { Api } from "../../utils/api/ApiConfig";
-import { ApiException } from "../../utils/api/ApiException";
 
 
 const token = localStorage.getItem('token') || '';
 
 
-const getAll = async (): Promise<IPeriods[] | ApiException> => {
+const getAll = async (): Promise<IPeriods[] | Error> => {
 
     try {
 
@@ -19,14 +18,12 @@ const getAll = async (): Promise<IPeriods[] | ApiException> => {
         return data;
 
     } catch (error: any) {
-        return new ApiException(error.response.data.message);
+       throw new Error(error.response.data.message);
     }
 
 }
 
-const create = async (periods: Omit<IPeriods, 'idPeriod'>): Promise<IPeriods | ApiException> => {
-
-    // console.log(JSON.parse(token));
+const create = async (periods: Omit<IPeriods, 'idPeriod'>): Promise<IPeriods | Error> => {
 
     try {
 
@@ -39,13 +36,13 @@ const create = async (periods: Omit<IPeriods, 'idPeriod'>): Promise<IPeriods | A
         return data;
 
     } catch (error: any) {
-        return new ApiException(error.response.data.message);
+        throw new Error(error.response.data.message);
     }
 
 
 }
 
-const getById = async (id: string): Promise<IPeriods | ApiException> => {
+const getById = async (id: string): Promise<IPeriods | Error> => {
 
     try {
 
@@ -58,13 +55,13 @@ const getById = async (id: string): Promise<IPeriods | ApiException> => {
         return data;
 
     } catch (error: any) {
-        return new ApiException(error.response.data.message);
+        throw new Error(error.response.data.message);
     }
 
 
 }
 
-const update = async (periods: IPeriods, id: string): Promise<void | ApiException> => {
+const update = async (periods: IPeriods, id: string): Promise<void | Error> => {
 
     try {
 
@@ -77,13 +74,13 @@ const update = async (periods: IPeriods, id: string): Promise<void | ApiExceptio
         return data;
 
     } catch (error: any) {
-        return new ApiException(error.response.data.message);
+        throw new Error(error.response.data.message);
     }
 
 
 }
 
-const deleteById = async (id: string): Promise<void | ApiException> => {
+const deleteById = async (id: string): Promise<void | Error> => {
 
     try {
 
@@ -96,7 +93,7 @@ const deleteById = async (id: string): Promise<void | ApiException> => {
         return data;
 
     } catch (error: any) {
-        return new ApiException(error.response.data.message);
+        throw new Error(error.response.data.message);
     }
 
 

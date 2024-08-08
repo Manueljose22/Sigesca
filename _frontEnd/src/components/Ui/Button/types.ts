@@ -5,6 +5,7 @@ export interface buttonProps{
     textButton: string;
     icon?: React.ReactNode;
     colorScheme: string;
+    textColor: string | '';
     iconRight?: React.ReactNode;
 }
 

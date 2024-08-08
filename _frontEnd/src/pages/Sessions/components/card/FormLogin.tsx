@@ -1,6 +1,6 @@
 import Input from '../Input/Input';
 import styles from './Card.module.css';
-import Button from '../../../../components/Ui/Button/Button';
+import Button from '../../../../components/Ui/button/Button';
 import { FaUser, FaKey } from "react-icons/fa6";
 import { ChangeEvent, FormEvent, useContext, useState } from 'react';
 import { IUserLogin } from './types';

@@ -2,7 +2,7 @@ import FormLogin from "../components/card/FormLogin";
 import StudentImg from '../../../../public/illustrations/students.svg';
 import logoImg from '../../../../public/logo-components/logoA.png';
 import styles from './Student.module.css';
-import ButtonLink from "../../../components/Ui/Button/ButtonLink";
+import ButtonLink from "../../../components/Ui/button/ButtonLink";
 import { FaUser, FaUserGraduate, FaChalkboardUser } from 'react-icons/fa6';
 
 
