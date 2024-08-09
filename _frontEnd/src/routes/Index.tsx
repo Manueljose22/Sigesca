@@ -2,9 +2,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import { NotFound } from "../pages/404/NotFound";
 import { Access } from "../pages/pageInitial/Access";
-import { Student } from "../pages/Sessions/students/Student";
-import { Admin } from "../pages/Sessions/admin/Admin";
-import { Teacher } from "../pages/Sessions/teatcher/Teacher";
+import { Student } from "../pages/Sessions/Student";
+import { Admin } from "../pages/Sessions/Admin";
+import { Teacher } from "../pages/Sessions/Teacher";
 import { Dashboard } from "../pages/dashboard/Dashboard";
 import { Course } from "../pages/course/Course";
 import { GeneralManagement } from "../pages/generalManagement/GeneralManagement";
@@ -31,7 +31,8 @@ export function Index() {
             
               <Dashboard />
             </PrivateRoute>} />
-            
+              
+              {/* Admin */}
               <Route path={"/dashboard"} element={<Dashboard />} >
                 <Route path={"/dashboard/course"} element={<Course />} />
                 <Route path={"/dashboard/management"} element={<GeneralManagement />} />

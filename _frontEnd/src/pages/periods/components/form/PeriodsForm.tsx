@@ -1,7 +1,7 @@
 
 import { ChangeEvent, FormEvent, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import Input from "../../../../components/Ui/input/Input";
+import {Input} from "../../../../components/Ui/input/Input";
 import { Select } from "../../../../components/Ui/select/Select";
 import { IPeriods } from "../../../../services/periods/types";
 import { PeriodsService } from "../../../../services/periods/PeriodsService";
@@ -61,24 +61,27 @@ export function PeriodsForm() {
             <div className="m3-2">
                 <form onSubmit={handleSubmit} className='d-flex gap-3 align-items-center'>
                     <Input
-                        label={'Ano:'}
+                        textLabel={'Ano:'}
                         name={'year'}
                         type={'number'}
-                        handleOnChenge={handleChange}
+                        handleChange={handleChange}
                         maxLength={4}
+
                     />
 
                     <Input
-                        label={'Data de inicio:'}
+                        textLabel={'Data de inicio:'}
                         name={'dateStart'}
                         type={'date'}
-                        handleOnChenge={handleChange}
+                        handleChange={handleChange}
+
                     />
                     <Input
-                        label={'Data de fim:'}
+                        textLabel={'Data de fim:'}
                         name={'dateEnd'}
                         type={'date'}
-                        handleOnChenge={handleChange}
+                        handleChange={handleChange}
+
                     />
                     <Select
                         label={'Situação:'}

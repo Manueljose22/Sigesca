@@ -19,8 +19,8 @@
 }
 
 .btn_primary{
-    width: 100%;
-    padding: .5rem 1rem;
+    /* width: 100%; */
+    padding: .4rem .6rem;
     background-color: var(--color-3);
     border: none !important;
     font-weight: 500;
@@ -45,7 +45,7 @@
     font-weight: 500;
     border-radius: .4rem;
     width: 100%;
-    padding: .5rem 1rem;
+    padding: .4rem .6rem;
     margin: 0 .5rem ;
 }
 

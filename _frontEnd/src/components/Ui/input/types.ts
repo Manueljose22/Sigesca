@@ -1,13 +1,15 @@
 import { ChangeEvent } from "react";
 
 
-
 export interface IInputProps{
-    maxLength?: number;
-    label: string;
     type: string;
-    placeholder?: string;
-    handleOnChenge: (e: ChangeEvent<HTMLInputElement>) => void;
     name: string;
     value?: string;
+    handleChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+    textLabel: string;
+    placeholder?: string;
+    icon?: React.ReactNode;
+    required?: boolean;
+    maxLength?: number;
+
 }
