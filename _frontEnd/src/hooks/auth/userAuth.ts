@@ -9,7 +9,7 @@ import { setMessageAlert } from "../../utils/message/setMessageAlert";
 
 export const userAuth = () => {
 
-    const [authenticated, setAuthenticated] = useState(false);
+    const [authenticated, setAuthenticated] = useState(true);
     const navigate = useNavigate();
 
 

@@ -5,7 +5,7 @@ import styles from './SideBar.module.css';
 import {FaAngleRight,FaUser, FaUserGraduate } from 'react-icons/fa';
 import { BiSolidDashboard, BiSolidHome } from 'react-icons/bi';
 import { ISideBarProps } from './types';
-import logoImg from '../../../../public/logo-components/logo.png';
+import logoImg from '../../../../public/logo-components/logoB.png';
 import { FaChalkboardUser, FaGear } from 'react-icons/fa6';
 
 
@@ -23,18 +23,18 @@ function SideBar({isOpen}: ISideBarProps) {
 
   return (
     <aside id='' className={`${styles.sidebar} ${styles[isOpen]}`}>
-        <li className='list-unstyled fs-3 py-3 px-4'>
+        <li className='list-unstyled  text-center p-0 m-0'>
             <img className='' src={logoImg} alt="sigesca" /> 
-            SIGESCA
         </li>
 
+        <hr />
        <div className="px-4 fw-3 my-3 border-bottom-sm ">
           <BiSolidHome className='me-2' /> 
           Painel
        </div>
        <nav className='mt-3 px-4'>
-          <li onClick={() => handleClick(1)} className={` ${isActive === 1 ? styles.bg_active : ''} pointer list-unstyled d-flex align-items-center mb-3'`}>
-            <Link to={'/dashboard/management'} >
+          <li  className={` ${isActive === 1 ? styles.bg_active : ''} pointer list-unstyled d-flex align-items-center mb-3'`}>
+            <Link onClick={() => handleClick(1)} to={'/dashboard/management'} className='d-flex align-items-center' >
               <BiSolidDashboard className='me-2' /> Gestão geral <FaAngleRight/>
             </Link>
           </li>
@@ -42,11 +42,11 @@ function SideBar({isOpen}: ISideBarProps) {
 
           {/* Students */}
 
-          <li onClick={() => handleClick(2)} 
+          <li 
               className={` ${ isActive === 2 ? styles.bg_active : '' }  
               ${styles.btn_down} d-flex align-items-center mb-3  list-unstyled collapsed pointer align-items-center mt-2`} >
 
-              <Link to={'/dashboard/students'}> 
+              <Link onClick={() => handleClick(2)}  to={'/dashboard/students'} className='d-flex align-items-center'> 
                 <FaUserGraduate className='me-2' /> 
                   Alunos 
                 <FaAngleRight/> 
@@ -56,11 +56,11 @@ function SideBar({isOpen}: ISideBarProps) {
           {/* Teachers */}
 
         
-          <li onClick={() => handleClick(3)} 
+          <li 
               className={` ${isActive === 3 ? styles.bg_active : ''} ${styles.btn_down} 
               d-flex align-items-center mb-3 list-unstyled collapsed pointer align-items-center mt-2`} 
               >
-              <Link to={'/dashboard/admin/teachers'}>
+              <Link onClick={() => handleClick(3)}  to={'/dashboard/admin/teachers'} className='d-flex align-items-center'>
                 <FaChalkboardUser className='me-2' /> 
                   Professores 
                 <FaAngleRight/>
@@ -70,11 +70,11 @@ function SideBar({isOpen}: ISideBarProps) {
           
           {/* Admin */}
 
-          <li onClick={() => handleClick(4)} 
+          <li 
             className={` ${isActive === 4 ? styles.bg_active : ''} ${styles.btn_down}
              d-flex align-items-center mb-3 list-unstyled collapsed pointer align-items-center mt-2`} >
             
-            <Link to={'/dashboard/admin/users'}> 
+            <Link onClick={() => handleClick(4)}  to={'/dashboard/admin/users'} className='d-flex align-items-center'> 
               <FaUser className='me-2' /> 
                 Administradores 
               <FaAngleRight/>
@@ -85,7 +85,7 @@ function SideBar({isOpen}: ISideBarProps) {
         {/* configuration */}
 
           <li className='my-2 list-unstyled d-flex align-items-center'>
-              <Link to={'/dashboard/admin/configuration'}> 
+              <Link to={'/dashboard/admin/configuration'} className='d-flex align-items-center'> 
                 <FaGear /> 
                   Configurações
                 </Link>

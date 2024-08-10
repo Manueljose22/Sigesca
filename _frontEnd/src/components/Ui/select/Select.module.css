@@ -1,0 +1,15 @@
+
+.container select{
+    width: 100%;
+    outline-color: var(--color-6);
+    border: 2px solid var(--color-6);
+    padding: .3rem .7rem;
+}
+
+.container select:focus{
+    border-color: var(--color-3);
+}
+
+.container label{
+    font-weight: 600;
+}

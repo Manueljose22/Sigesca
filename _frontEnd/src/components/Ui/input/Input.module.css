@@ -1,21 +1,32 @@
 .container input{
     border: none;
     border-radius: none;
-    padding: .4rem;
+    padding: .3rem .7rem;
     width: 100%;
     outline: none;
     border-bottom: 2px solid var(--color-6);
 }
 
 .container input:focus{
-    border-color: var(--color-3);
+    border-color: var(--color-3) !important;
 }
 
 .container .icons{
-    padding: .4rem;
+    padding: .3rem;
     border-bottom: 2px solid var(--color-4)
+}
+.container .none{
+    display: none;
 }
 
 .container label{
     font-weight: 600;
+}
+
+.border input{
+   border: 2px solid var(--color-6) !important;
+   border-radius: .4rem;
+}
+.border input:focus{
+    border-color: var(--color-3);
 }

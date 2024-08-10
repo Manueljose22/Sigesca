@@ -11,5 +11,7 @@ export interface IInputProps{
     icon?: React.ReactNode;
     required?: boolean;
     maxLength?: number;
+    iconBar?: any;
+    border?: any;
 
 }

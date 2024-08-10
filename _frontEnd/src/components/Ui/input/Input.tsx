@@ -3,12 +3,12 @@ import styles from './Input.module.css';
 
 
 
-function Input({ name, icon, type, handleChange, value, textLabel, placeholder, maxLength }: IInputProps) {
+function Input({ name, icon, type, handleChange, value, textLabel, placeholder, iconBar, maxLength, border }: IInputProps) {
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} ${styles[border]}`}>
       <label className="my-2 form-label" htmlFor={name}>{textLabel}</label>
       <div className="d-flex align-items-center mb-4">
-        <div className={styles.icons}>
+        <div className={`${styles.icons} ${styles[iconBar]}`}>
           {icon}
         </div>
         <input

@@ -21,7 +21,7 @@ function NavBar({toggleSidebar}: INavBarProps) {
   }
 
   return (
-    <nav className={`${styles.container} container-fluid navbar navbar-expand px-3 py-3 border-bottom d-flex`}>
+    <nav className={`${styles.container} container-fluid navbar navbar-expand px-3 py-2 justify-content-between border-bottom d-flex`}>
         <button onClick={toggleSidebar}  id='sidebar_toggle' type='button'>
             <span className="navbar-toggler-icon"></span>
         </button>

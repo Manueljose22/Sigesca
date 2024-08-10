@@ -54,45 +54,60 @@ export function PeriodsForm() {
 
 
     return (
-        <div className='card px-5 py-3 mt-3' >
-            <div className="border-bottom" >
+        <div className='card px-5 py-3 mt-3 w-100' >
+            <div className="border-bottom mb-3" >
                 <h5 className="h5" >Adicionar novo período lectivo</h5>
             </div>
-            <div className="m3-2">
-                <form onSubmit={handleSubmit} className='d-flex gap-3 align-items-center'>
-                    <Input
-                        textLabel={'Ano:'}
-                        name={'year'}
-                        type={'number'}
-                        handleChange={handleChange}
-                        maxLength={4}
+            <div className="container">
+                <form onSubmit={handleSubmit} className='row'>
+                    <div className="col-lg-2 col-md-3 col-sm-4">
+                        <Input
+                            textLabel={'Ano:'}
+                            name={'year'}
+                            type={'number'}
+                            handleChange={handleChange}
+                            maxLength={4}
+                            iconBar={'none'}
+                            border={'border'}
 
-                    />
-
-                    <Input
-                        textLabel={'Data de inicio:'}
-                        name={'dateStart'}
-                        type={'date'}
-                        handleChange={handleChange}
-
-                    />
-                    <Input
-                        textLabel={'Data de fim:'}
-                        name={'dateEnd'}
-                        type={'date'}
-                        handleChange={handleChange}
-
-                    />
-                    <Select
-                        label={'Situação:'}
-                        name={'status'}
-                        handleOnchange={handleSelect}
-                    />
-
-                    <div className="text-end my-2">
-                        <br />
-                        <button type="submit" className="btn btn-success mt-1 px-4"> Adicionar</button>
+                        />
                     </div>
+                    <div className="col-lg-2 col-md-3 col-sm-4">
+                        <Input
+                            textLabel={'Data de inicio:'}
+                            name={'dateStart'}
+                            type={'date'}
+                            handleChange={handleChange}
+                            iconBar={'none'}
+                            border={'border'}
+                        />
+
+                    </div>
+                    <div className="col-lg-2 col-md-3 col-sm-4">
+                        <Input
+                            textLabel={'Data de fim:'}
+                            name={'dateEnd'}
+                            type={'date'}
+                            handleChange={handleChange}
+                            iconBar={'none'}
+                            border={'border'}
+                        />
+                    </div>
+                    <div className="col-lg-2 col-md-3 col-sm-4">
+                        <Select
+                            label={'Situação:'}
+                            name={'status'}
+                            handleOnchange={handleSelect}
+                        />
+
+                    </div>
+                    <div className="col-lg-2 col-md-3 col-sm-4 d-flex align-items-center">
+                        <div className="mt-3">
+                            <button type="submit" className="btn btn-success">Adicionar</button>
+                        </div>
+                    </div>
+
+
                 </form>
             </div>
         </div>

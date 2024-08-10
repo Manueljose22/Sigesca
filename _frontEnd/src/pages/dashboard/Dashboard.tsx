@@ -23,7 +23,7 @@ function Dashboard() {
           <main className={styles.main}>
             <NavBar toggleSidebar={toggleSidebar} />
             
-            <section className='py-4 px-5 container bg-secondary h-100vh'>
+            <section className='py-4 px-5 container-fluid bg-secondary h-100vh'>
                 <Outlet />
             </section>
           </main>

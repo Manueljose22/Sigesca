@@ -1,5 +1,5 @@
 .sidebar{
-    width: 22rem;
+    width: 18rem;
     height: 100vh;
     background-color: var(--color-4) !important;
     color: #fff  !important;
@@ -9,6 +9,7 @@
 
 .sidebar img{
     width: 5rem;
+    background-color: aqua;
 }
 
 .bg_dropdown{
@@ -22,7 +23,7 @@
 }
 
 .sidebar.close{
-    margin-left: -22rem;
+    margin-left: -18rem;
 }
 
 .sidebar svg{
@@ -44,7 +45,7 @@ a, li{
 .bg_active {
     background-color: var(--color-5);
     border-radius: .1rem;
-    padding: .5rem 0;
+    padding: .4rem 0;
     border-left: .4rem solid var(--color-3);
 }
 
