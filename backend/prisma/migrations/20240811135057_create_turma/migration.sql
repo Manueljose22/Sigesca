@@ -23,4 +23,4 @@ ALTER TABLE `Turmas` ADD CONSTRAINT `Turmas_niveil_id_fkey` FOREIGN KEY (`niveil
 ALTER TABLE `Turmas` ADD CONSTRAINT `Turmas_sala_id_fkey` FOREIGN KEY (`sala_id`) REFERENCES `Salas`(`idSala`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `Turmas` ADD CONSTRAINT `Turmas_periodo_letivo_id_fkey` FOREIGN KEY (`periodo_letivo_id`) REFERENCES `Periodo_letivo`(`idPeriodo`) ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE `Turmas` ADD CONSTRAINT `Turmas_periodo_letivo_id_fkey` FOREIGN KEY (`periodo_letivo_id`) REFERENCES `Periodo_letivo`(`idPeriod`) ON DELETE SET NULL ON UPDATE CASCADE;

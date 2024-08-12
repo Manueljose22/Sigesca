@@ -3,7 +3,7 @@ CREATE TABLE `Sessoes` (
     `idUsuario` VARCHAR(191) NOT NULL,
     `codigo` INTEGER NOT NULL,
     `senha` VARCHAR(191) NOT NULL,
-    `nivelAcesso` ENUM('admin', 'stundent', 'teacher') NOT NULL DEFAULT 'admin',
+    `nivelAcesso` ENUM('admin', 'student', 'teacher') NOT NULL DEFAULT 'admin',
     `created_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updated_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `professor_id` VARCHAR(191) NULL,

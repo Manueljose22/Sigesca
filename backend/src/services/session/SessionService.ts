@@ -47,6 +47,8 @@ class SessionService {
                
         }, String(process.env.SECRET_JWT))
 
+        
+
         return {
             token
         }

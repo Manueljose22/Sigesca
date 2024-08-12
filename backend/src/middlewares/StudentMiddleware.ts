@@ -28,78 +28,58 @@ class StudentMiddleware {
 
     static validatedFields(request: Request, response: Response, next: NextFunction) {
 
-        const { nome, nome_mae, nome_pai, nacionalidade, naturalidade, numero_bi, bi_validade, municipio, casa, bairro, rua,
-            pdc, email, genero, documento, data_nascimento, telefoneResponsavel, telefone
+        const { nome,  nacionalidade, bi, bi_validade, municipio, casa, bairro, rua,
+            pdc, email, genero, data_nascimento,  telefone
         } = request.body;
 
-        if (!nome) {
+        if (nome === null) {
             return response.status(422).json({ message: 'Informe o nome do estudante!' })
 
-        } else if (!email) {
+        } else if (email === null) {
             return response.status(422).json({ message: 'Informe o email!' })
 
-        } else if (!nome_mae) {
-            return response.status(422).json({ message: 'Informe o nome da Mãe!' })
-
-        } else if (!nome_pai) {
-
-            return response.status(422).json({ message: 'Informe o nome do Pai' })
-
-        } else if (!nacionalidade) {
+        }else if (nacionalidade === null) {
 
             return response.status(422).json({ message: 'Informe a nacionalidade!' })
 
-        } else if (!naturalidade) {
-
-            return response.status(422).json({ message: 'Informe a naturalidade!' })
-
-        } else if (!numero_bi) {
+        } else if (bi === null) {
 
             return response.status(422).json({ message: 'Informe o número do Bilhete de Identidade!' })
 
-        } else if (!bi_validade) {
+        } else if (bi_validade === null) {
 
             return response.status(422).json({ message: 'Informe a data de validade!' })
 
-        } else if (!municipio) {
+        } else if (municipio === null) {
 
             return response.status(422).json({ message: 'Informe o município!' })
 
-        } else if (!bairro) {
+        } else if (bairro === null) {
 
             return response.status(422).json({ message: 'Informe o bairro!' })
 
-        } else if (!casa) {
+        } else if (casa === null) {
 
             return response.status(422).json({ message: 'Informe o número da casa!' })
 
-        } else if (!genero) {
+        } else if (genero === null) {
 
             return response.status(422).json({ message: 'Informe o gênero!' })
 
-        } else if (!rua) {
+        } else if (rua === null) {
 
             return response.status(422).json({ message: 'Informe a rua!' })
 
-        } else if (!data_nascimento) {
+        } else if (data_nascimento === null) {
 
             return response.status(422).json({ message: 'Informe a data de nascimento!' })
 
-        } else if (!pdc) {
+        } else if (pdc === null) {
 
             return response.status(422).json({ message: 'Informe se é portador de dificiência!' })
 
-        } else if (!documento) {
+        } 
 
-            return response.status(422).json({ message: 'Envie o documento!' })
-
-        } else if (!telefone) {
-
-            return response.status(422).json({ message: 'Informe o seu número ou de casa!' })
-        } else if (!telefoneResponsavel) {
-
-            return response.status(422).json({ message: 'Informe o número do resposavel!' })
-        }
 
         next();
     }

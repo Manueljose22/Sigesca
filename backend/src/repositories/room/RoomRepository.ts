@@ -11,7 +11,7 @@ export class RoomRepository implements IRoomRepository {
         await prismaClient.sala.create({
             data: {
                 nome: name,
-                capacidadeAlunos: numberStudents
+                capacidadeAlunos: Number(numberStudents)
             }
         });
     }

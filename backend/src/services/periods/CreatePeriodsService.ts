@@ -25,11 +25,14 @@ class CreatePeriodsService {
 
         if (!year || !dateStart || !dateEnd) {
 
-            throw new Error('Por favor preecha todos os campos!')
+            throw new Error('Por favor preecha todos os campos!');
         }
 
-        if (year < new Date().getFullYear().toString() || year !== new Date(dateStart).getFullYear().toString()
-            || year !== new Date(dateEnd).getFullYear().toString()) {
+        if (year.length > 4) {
+            throw new Error('Ano inválido, tente novamente!');
+        }
+
+        if (year < new Date().getFullYear().toString() || year !== new Date(dateStart).getFullYear().toString()) {
 
             throw new Error('Data inválida, tente novamente!');
         }

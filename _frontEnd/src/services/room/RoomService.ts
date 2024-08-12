@@ -1,15 +1,15 @@
-import { IPeriods } from "./types";
+import { IRoomService } from "./types";
 import { Api } from "../../utils/api/ApiConfig";
 
 
 const token = localStorage.getItem('token') || '';
 
 
-const getAll = async (): Promise<IPeriods[]> => {
+const getAll = async (): Promise<IRoomService[]> => {
 
     try {
 
-        const { data } = await Api.get('/periods/', {
+        const { data } = await Api.get('/room/', {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -23,11 +23,11 @@ const getAll = async (): Promise<IPeriods[]> => {
 
 }
 
-const create = async (periods: Omit<IPeriods, 'idPeriod'>): Promise<IPeriods> => {
+const create = async (room: Omit<IRoomService, 'idPeriod'>): Promise<IRoomService> => {
 
     try {
 
-        const { data } = await Api.post<any>('/periods/register', periods, {
+        const { data } = await Api.post<any>('/room/register', room, {
             headers: {
                 Authorization: `Bearer ${token}`,
             }
@@ -42,11 +42,11 @@ const create = async (periods: Omit<IPeriods, 'idPeriod'>): Promise<IPeriods> =>
 
 }
 
-const getById = async (id: string): Promise<IPeriods> => {
+const getById = async (id: string): Promise<IRoomService> => {
 
     try {
 
-        const { data } = await Api.get(`/periods/${id}`, {
+        const { data } = await Api.get(`/room/${id}`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -61,11 +61,11 @@ const getById = async (id: string): Promise<IPeriods> => {
 
 }
 
-const update = async (periods: IPeriods, id: string): Promise<void> => {
+const update = async (room: IRoomService, id: string): Promise<void> => {
 
     try {
 
-        const { data } = await Api.put(`/periods/${id}`, periods, {
+        const { data } = await Api.put(`/room/${id}`, room, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -84,7 +84,7 @@ const deleteById = async (id: string): Promise<void> => {
 
     try {
 
-        const { data } = await Api.delete(`/periods/${id}`, {
+        const { data } = await Api.delete(`/room/${id}`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -101,7 +101,7 @@ const deleteById = async (id: string): Promise<void> => {
 
 
 
-export const PeriodsService = {
+export const RoomService = {
     getAll,
     getById,
     create,

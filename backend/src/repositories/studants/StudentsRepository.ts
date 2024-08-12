@@ -6,44 +6,9 @@ import { IStudentsRepository, saveStudent } from "./IStudentsRepository";
 
 
 export class StudentsRepository implements IStudentsRepository {
-
-    async findById(id: string): Promise<saveStudent | null> {
-
-        return await prismaClient.aluno.findFirst({
-            where: {
-                idAluno: id
-            },
-            include: {
-                responsavel: true,
-                Endereco: true,
-                Sessao: {
-                    select: {
-                        codigo: true
-                    }
-                }
-            }
-        })
-    }
-
-    async findAlls(): Promise<saveStudent[] | null> {
-
-        const alls = await prismaClient.aluno.findMany({
-            include: {
-                responsavel: true,
-                Endereco: true,
-                Sessao: {
-                    select: {
-                        codigo: true
-                    }
-                }
-            }
-        })
-
-        return alls;
-    }
-
-    async save({ bairro, bi_validade, casa, senha, data_nascimento, telefoneResponsavel, naturalidade, pdc, documento, email, foto, genero, municipio, n_matricula, nacionalidade,
-        nome, nome_mae, nome_pai, numero_bi, rua, telefone
+    
+    async save({ bairro, bi_validade, casa, data_nascimento, pdc, senha, email, foto, genero, municipio, n_matricula, nacionalidade,
+        nome, bi, rua, telefone
     }: StudentRequest): Promise<void> {
 
         const endereco = await prismaClient.endereco.create({
@@ -56,22 +21,12 @@ export class StudentsRepository implements IStudentsRepository {
         });
 
 
-        const responsavel = await prismaClient.responsavel.create({
-            data: {
-                nome_pai,
-                nome_mae,
-                telefone: telefoneResponsavel,
-                enderecosId: endereco.idEndereco
-            },
-        });
-
 
         const aluno = await prismaClient.aluno.create({
             data: {
                 n_matricula,
                 nome,
-                documento,
-                numero_bi,
+                bi,
                 data_nascimento,
                 bi_validade,
                 nacionalidade,
@@ -79,11 +34,8 @@ export class StudentsRepository implements IStudentsRepository {
                 telefone,
                 email,
                 foto,
-                naturalidade,
                 pdc,
                 enderecosId: endereco.idEndereco,
-                responsaveisId: responsavel.idResponsavel,
-
             },
         });
 
@@ -98,21 +50,39 @@ export class StudentsRepository implements IStudentsRepository {
         });
     }
 
-    async findByNumber(n_matricula: number): Promise<saveStudent | null> {
+    async findById(id: string): Promise<saveStudent | null> {
 
-        const student = await prismaClient.aluno.findFirst({
+        return await prismaClient.aluno.findFirst({
             where: {
-                n_matricula: n_matricula
-            }, include: {
-                responsavel: {
-                    select: {
-                        nome_pai: true,
-                        nome_mae: true,
-                        telefone: true
+                idAluno: id
+            },
+            include: {
+                Endereco: {
+                    select:{
+                        idEndereco: true,
+                        municipio: true,
+                        bairro: true,
+                        rua: true,
+                        casa: true
                     }
                 },
+                Sessao: {
+                    select: {
+                        codigo: true,
+                        senha: true,
+                    }
+                }
+            }
+        })
+    }
+
+    async findAlls(): Promise<saveStudent[] | null> {
+
+        const alls = await prismaClient.aluno.findMany({
+            include: {
                 Endereco: {
                     select: {
+                        idEndereco: true,
                         bairro: true,
                         municipio: true,
                         rua: true,
@@ -121,6 +91,35 @@ export class StudentsRepository implements IStudentsRepository {
                 },
                 Sessao: {
                     select: {
+                        codigo: true,
+                        senha: true,
+                    }
+                }
+            }
+        })
+
+        return alls;
+    }
+
+
+    async findByNumber(n_matricula: number): Promise<saveStudent | null> {
+
+        const student = await prismaClient.aluno.findFirst({
+            where: {
+                n_matricula: n_matricula
+            }, include: {
+                Endereco: {
+                    select: {
+                        idEndereco: true,
+                        bairro: true,
+                        municipio: true,
+                        rua: true,
+                        casa: true
+                    }
+                },
+                Sessao: {
+                    select: {
+                        codigo: true,
                         senha: true
                     }
                 }
@@ -137,17 +136,12 @@ export class StudentsRepository implements IStudentsRepository {
             where: {
                 nome: {
                     startsWith: name,
+
                 }
             }, include: {
-                responsavel: {
-                    select: {
-                        nome_pai: true,
-                        nome_mae: true,
-                        telefone: true
-                    }
-                },
                 Endereco: {
                     select: {
+                        idEndereco: true,
                         bairro: true,
                         municipio: true,
                         rua: true,
@@ -156,6 +150,7 @@ export class StudentsRepository implements IStudentsRepository {
                 },
                 Sessao: {
                     select: {
+                        codigo: true,
                         senha: true
                     }
                 }
@@ -169,17 +164,11 @@ export class StudentsRepository implements IStudentsRepository {
 
         const student = await prismaClient.aluno.findUnique({
             where: {
-                numero_bi: numberBI
+                bi: numberBI
             }, include: {
-                responsavel: {
-                    select: {
-                        nome_pai: true,
-                        nome_mae: true,
-                        telefone: true
-                    }
-                },
                 Endereco: {
                     select: {
+                        idEndereco: true,
                         bairro: true,
                         municipio: true,
                         rua: true,
@@ -188,6 +177,7 @@ export class StudentsRepository implements IStudentsRepository {
                 },
                 Sessao: {
                     select: {
+                        codigo: true,
                         senha: true
                     }
                 }
@@ -207,11 +197,12 @@ export class StudentsRepository implements IStudentsRepository {
         })
     }
 
-     async update(id: string, data: saveStudent): Promise<void> {
+     async update(id: string, data: StudentRequest): Promise<void> {
 
         const endereco = await prismaClient.endereco.update({
+            
             where: {
-                idEndereco: data.enderecosId
+                idEndereco: data.idEndereco
             },
 
             data: {
@@ -224,25 +215,7 @@ export class StudentsRepository implements IStudentsRepository {
             },
         });
 
-
-        const responsavel = await prismaClient.responsavel.update({
-
-            where: {
-                idResponsavel: data.responsaveisId
-            },
-
-            data: {
-                nome_pai: data.nome_pai,
-                nome_mae: data.nome_mae,
-                telefone: data.telefoneResponsavel,
-                enderecosId: endereco.idEndereco,
-                updatedAt: new Date(),
-                
-            },
-        });
-
-
-        const aluno = await prismaClient.aluno.update({
+        await prismaClient.aluno.update({
             
             where:{
                 idAluno: id
@@ -251,19 +224,16 @@ export class StudentsRepository implements IStudentsRepository {
             data: {
                 n_matricula: data.n_matricula,
                 nome: data.nome,
-                documento: data.documento,
-                numero_bi: data.numero_bi,
-                data_nascimento: data.data_nascimento,
+                bi: data.bi,
                 bi_validade: data.bi_validade,
+                data_nascimento: data.data_nascimento,
                 nacionalidade: data.nacionalidade,
                 genero: data.genero,
                 telefone: data.telefone,
                 email: data.email,
                 foto: data.foto,
-                naturalidade: data.nacionalidade,
                 pdc: data.pdc,
                 enderecosId: endereco.idEndereco, 
-                responsaveisId: responsavel.idResponsavel,
                 updatedAt: new Date()
 
             }

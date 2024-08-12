@@ -58,7 +58,7 @@ function Admin() {
             <ButtonLink
               icon={<FaChalkboardUser />}
               textButton={"Portal professor"}
-              url={"/session/teacher"}
+              url={"/session/professores"}
               colorScheme={"btn_secondary"}
               textColor={'text_color_primary'}
             />
@@ -67,7 +67,7 @@ function Admin() {
               colorScheme={"btn_secondary"}
               icon={<FaUserGraduate />}
               textButton={"Portal aluno"}
-              url={"/session/student"}
+              url={"/session/estudantes"}
               textColor={'text_color_primary'}
             />
           </div>

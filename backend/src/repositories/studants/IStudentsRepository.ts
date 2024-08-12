@@ -1,37 +1,57 @@
-import { Aluno } from "@prisma/client";
 import { StudentRequest } from "../../services/students/CreateStudentsService";
 
 
 
 
-// export { Aluno as saveStudent}
+// export type saveStudent = {
+//     idAluno: string;
+//     n_matricula: number;
+//     nome: string;
+//     bi: string;
+//     bi_validade: string;
+//     data_nascimento: string;
+//     nacionalidade: string;
+//     pdc: string;
+//     genero: string;
+//     telefone: string;
+//     email: string;
+//     foto: string;
+//     municipio:  string
+//     bairro:   string
+//     rua: string
+//     casa: string
+//     senha: string;
+//     enderecosId: string;
+// }
 
 export type saveStudent = {
     idAluno: string;
     n_matricula: number;
     nome: string;
-    documento: string;
-    numero_bi: string;
-    data_nascimento: string;
+    bi: string;
     bi_validade: string;
+    data_nascimento: string;
     nacionalidade: string;
-    naturalidade: string;
     pdc: string;
     genero: string;
     telefone: string;
     email: string;
-    foto: string;
-    nome_pai: string;
-    nome_mae: string;
-    telefoneResponsavel: string
-    municipio:  string
-    bairro:   string
-    rua: string
-    casa: string
-    senha: string;
-    responsaveisId: string;
-    enderecosId: string;
+    foto: string | null;
+    enderecosId: string | null;
+    Endereco: {
+        idEndereco: string;
+        municipio: string;
+        bairro: string;
+        rua: string;
+        casa: string;
+    } | null;
+    Sessao: {
+        codigo: number;
+        senha: string;
+    }[];
 }
+
+
 
 
 
@@ -42,6 +62,6 @@ export interface IStudentsRepository {
     findById(id: string): Promise<saveStudent | null>
     findByBI(numberBI: string): Promise<saveStudent | null>
     findAlls(): Promise<saveStudent[] | null>
-    update(id: string, data: saveStudent): Promise<void>
+    update(id: string, data: StudentRequest): Promise<void>
     delete(id: string): Promise<void>
 }

@@ -9,6 +9,7 @@ function Container({ title, subtitle, textBtnDetails, addNew, showDetails }: ICo
 
     const [isVisiblity, setVisiblity] = useState<boolean>(false);
 
+
     const handleClick = () => {
         setVisiblity(!isVisiblity);
     };

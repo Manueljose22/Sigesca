@@ -28,13 +28,10 @@
 }
 
 ::-webkit-scrollbar-thumb{
-  background-color: var(--color-1);
+  background-color: var(--color-5);
   border-radius: .3rem;
 }
 
-::-webkit-scrollbar-track{
-  background-color: var(--color-5);
-}
 
 a{
   text-decoration: none;
@@ -77,10 +74,6 @@ h5{
   font-weight: 700;
 }
 
-.btn:hover{
-  background-color: none;
-  border: 1px solid var(--color-3);
-}
 
 .btn-success{
   background-color: var(--color-9)  !important;
@@ -95,6 +88,8 @@ h5{
 .h-100vh{
   min-height: 100vh;
 }
+
+
 
 /* imgs */
 .logo-access{

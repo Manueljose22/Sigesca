@@ -13,37 +13,37 @@ function GeneralManagement() {
                     <Card
                         title={'Período Lectivo'}
                         description={'Defina o período lectivo actual da instituíção, o edite ou o finalize.'}
-                        url={'/dashboard/periods'}
+                        url={'/dashboard/períodos'}
                     />
                 </div>
                 <div className="col-lg-3 col-md-4">
                     <Card
                         title={'Sala'}
                         description={'Crie edite as salas onde serão realizadas as aulas da instituíção.'}
-                        url={'/dashboard/room'}
+                        url={'/dashboard/salas'}
                     />
                 </div>
                 <div className="col-lg-3 col-md-4">
                     <Card
                         title={'Curso'}
                         description={'Crie os cursos que serão ofericidos aos alunos.'}
-                        url={'/dashboard/course'}
+                        url={'/dashboard/cursos'}
                     />
                 </div>
             </div>
-            <div className="row my-4 gap-2">
-                <div className="col-lg-4 col-md-4">
+            <div className="row my-4 gap-3">
+                <div className="col-lg-5 col-md-6">
                     <Card
                         title={'Disciplina'}
                         description={'Crie as disciplinas que serão ministradas pelos professores.'}
-                        url={'/dashboard/lessons'}
+                        url={'/dashboard/disciplinas'}
                     />
                 </div>
-                <div className="col-lg-4 col-md-4">
+                <div className="col-lg-5 col-md-6">
                     <Card
                         title={'Turma'}
                         description={'Adicione uma nova turma ao seu período lectivo.'}
-                        url={'/dashboard/class'}
+                        url={'/dashboard/turmas'}
                     />
                 </div>
             </div>

@@ -1,10 +1,9 @@
+import { IPeriods } from "../../../../services/periods/types";
 
 
-
-export interface IDataPeriods{
-    idPeriod: string;
-    year: string;
-    dateStart: string;
-    dateEnd: string;
-    status: string;
- }
+export interface ITableViewProps{
+    data: IPeriods[];
+    handleEdit: (id: string) => void;
+    isLoading: boolean;
+    isEnabled: boolean;
+}

@@ -47,62 +47,39 @@ model Aluno {
   n_matricula     Int          @unique
   nome            String
   email           String       @unique
-  documento       String
-  numero_bi       String       @unique
-  data_nascimento String
+  bi              String       @unique
   bi_validade     String
+  data_nascimento String
   nacionalidade   String
-  naturalidade    String
   genero          String
   telefone        String
   foto            String?
   pdc             String
   enderecosId     String       @unique @map("endereco_id")
-  responsaveisId  String       @unique @map("responsavel_id")
   createdAt       DateTime     @default(now()) @map("created_at")
   updatedAt       DateTime     @default(now()) @map("updated_at")
-  responsavel     Responsavel? @relation(fields: [responsaveisId], references: [idResponsavel])
   Endereco        Endereco?    @relation(fields: [enderecosId], references: [idEndereco])
   avaliacao       Avaliacao[]
-  pagamento       Pagamento[]
   matricula       Matricula[]
   Sessao          Sessao[]
 
   @@map("Alunos")
 }
 
-model Responsavel {
-  idResponsavel String    @id() @default(uuid())
-  nome_pai      String
-  nome_mae      String
-  telefone      String    @unique
-  enderecosId   String    @unique @map("endereco_id")
-  createdAt     DateTime  @default(now()) @map("created_at")
-  updatedAt     DateTime  @default(now()) @map("updated_at")
-  Endereco      Endereco? @relation(fields: [enderecosId], references: [idEndereco], onDelete: Cascade, onUpdate: Cascade)
-  aluno         Aluno?
-
-  @@map("Responsaveis")
-}
-
 model Professor {
-  idProfessor   String          @id @default(uuid())
-  usuarioId     String          @unique @map("usuario_id")
-  nome          String
-  formacao      String
-  nivel         String
-  numero_bi     String          @unique
-  validade_bi   String
-  Documento     String
-  telefone      String          @unique
-  email         String          @unique
-  foto          String?
-  pdc           String
-  salario       Float
-  enderecoId    String          @unique @map("endereco_id")
-  Endereco      Endereco?       @relation(fields: [enderecoId], references: [idEndereco], onDelete: Cascade, onUpdate: Cascade)
-  createdAt     DateTime        @default(now()) @map("created_at")
-  updatedAt     DateTime        @default(now()) @map("updated_at")
+  idProfessor String    @id @default(uuid())
+  nome        String
+  formacao    String
+  bi          String    @unique
+  validade_bi String
+  telefone    String    @unique
+  email       String    @unique
+  foto        String?
+  pdc         String
+  enderecoId  String    @unique @map("endereco_id")
+  Endereco    Endereco? @relation(fields: [enderecoId], references: [idEndereco], onDelete: Cascade, onUpdate: Cascade)
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @default(now()) @map("updated_at")
   Sessao        Sessao[]
   discprofessor DiscProfessor[]
 
@@ -110,14 +87,13 @@ model Professor {
 }
 
 model Endereco {
-  idEndereco String        @id() @default(uuid())
+  idEndereco String   @id() @default(uuid())
   municipio  String
   bairro     String
   rua        String
   casa       String
-  created_At DateTime      @default(now()) @map("created_at")
-  updated_At DateTime      @default(now()) @map("updated_at")
-  resposavel Responsavel[]
+  created_At DateTime @default(now()) @map("created_at")
+  updated_At DateTime @default(now()) @map("updated_at")
   professor  Professor[]
   aluno      Aluno[]
 
@@ -188,10 +164,10 @@ model Turma {
 }
 
 model Periodo_letivo {
-  idPeriod   String      @id @default(uuid())
-  year         String
-  dateStart    DateTime    @db.Date()
-  dateEnd    DateTime    @db.Date()
+  idPeriod    String      @id @default(uuid())
+  year        String
+  dateStart   DateTime    @db.Date()
+  dateEnd     DateTime    @db.Date()
   status      Boolean     @default(value: false)
   createdAt   DateTime    @default(now()) @map("created_at")
   updatedAt   DateTime    @default(now()) @map("updated_at")
@@ -206,7 +182,6 @@ model Matricula {
   periodo_letivoId String?         @map("periodo_letivo_id")
   tipo             Tipo_matricula  @default(value: Novo)
   data_matricula   DateTime
-  recibo_pagamento String          @unique
   status           Boolean         @default(false)
   createdAt        DateTime        @default(now()) @map("created_at")
   updatedAt        DateTime        @default(now()) @map("updated_at")
@@ -232,9 +207,10 @@ model DiscProfessor {
 
 model Avaliacao {
   idAvaliacao   String  @id @default(uuid())
-  parcelar1     Float
-  parcelar2     Float
-  parcelar3     Float
+  nota_1        Float
+  nota_2        Float
+  nota_3        Float
+  exame         Float
   recurso       Float
   mediaFinal    Float
   alunosId      String? @map("aluno_id")
@@ -248,17 +224,4 @@ model Avaliacao {
   updatedAt  DateTime    @default(now()) @map("updated_at")
 
   @@map("Avaliacoes")
-}
-
-model Pagamento {
-  idPagamento    String   @id @default(uuid())
-  alunosId       String?  @map("aluno_id")
-  valor          Float
-  data_pagamento DateTime @db.Date()
-  status         Boolean  @default(false)
-  createdAt      DateTime @default(now()) @map("created_at")
-  updatedAt      DateTime @default(now()) @map("updated_at")
-  Aluno          Aluno?   @relation(fields: [alunosId], references: [idAluno])
-
-  @@map("Pagamentos")
 }

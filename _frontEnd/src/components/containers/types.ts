@@ -1,3 +1,4 @@
+import { Dispatch } from "react";
 
 
 export interface IContainerProps {
@@ -6,4 +7,5 @@ export interface IContainerProps {
     textBtnDetails: string;
     showDetails: React.ReactNode;
     addNew: React.ReactNode;
+  
 }

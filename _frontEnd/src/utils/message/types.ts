@@ -1,7 +1,7 @@
 
 
 export interface ISetMessageProps{
-    title: string;
+    title?: string;
     type: any;
     msg: string;
 }

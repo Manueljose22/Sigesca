@@ -8,8 +8,7 @@
 }
 
 .sidebar img{
-    width: 5rem;
-    background-color: aqua;
+    width: 24.6%;
 }
 
 .bg_dropdown{
@@ -35,11 +34,6 @@ a, li{
     font-weight: 500;
     cursor: pointer;
 }
-
-/* a:hover{
-    transition: all .30s ease-in-out;
-    color: var(--color-3);
-} */
 
 
 .bg_active {

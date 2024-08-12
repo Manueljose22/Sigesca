@@ -31,7 +31,7 @@ function Access() {
           img={imgTeacher}
           title={"PROFESSOR"}
           btnText={"Acessar"}
-          url={"/session/teacher"}
+          url={"/session/professores"}
           icon={<FaRightToBracket />}
         />
 
@@ -42,7 +42,7 @@ function Access() {
           img={imgStudent}
           title={"ALUNO"}
           btnText={"Acessar"}
-          url={"/session/student"}
+          url={"/session/estudantes"}
           icon={<FaRightToBracket />}
         />
         </div>

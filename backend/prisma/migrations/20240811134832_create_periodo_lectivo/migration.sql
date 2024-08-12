@@ -1,10 +1,12 @@
 -- CreateTable
 CREATE TABLE `Periodo_letivo` (
-    `idPeriodo` VARCHAR(191) NOT NULL,
-    `data_inicio` DATE NOT NULL,
-    `data_fim` DATE NOT NULL,
+    `idPeriod` VARCHAR(191) NOT NULL,
+    `year` VARCHAR(191) NOT NULL,
+    `dateStart` DATE NOT NULL,
+    `dateEnd` DATE NOT NULL,
+    `status` BOOLEAN NOT NULL DEFAULT false,
     `created_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updated_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
 
-    PRIMARY KEY (`idPeriodo`)
+    PRIMARY KEY (`idPeriod`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;

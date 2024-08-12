@@ -1,9 +1,10 @@
 -- CreateTable
 CREATE TABLE `Avaliacoes` (
     `idAvaliacao` VARCHAR(191) NOT NULL,
-    `parcelar1` DOUBLE NOT NULL,
-    `parcelar2` DOUBLE NOT NULL,
-    `parcelar3` DOUBLE NOT NULL,
+    `nota_1` DOUBLE NOT NULL,
+    `nota_2` DOUBLE NOT NULL,
+    `nota_3` DOUBLE NOT NULL,
+    `exame` DOUBLE NOT NULL,
     `recurso` DOUBLE NOT NULL,
     `mediaFinal` DOUBLE NOT NULL,
     `aluno_id` VARCHAR(191) NULL,

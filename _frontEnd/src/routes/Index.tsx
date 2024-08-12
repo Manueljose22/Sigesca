@@ -11,7 +11,8 @@ import { GeneralManagement } from "../pages/generalManagement/GeneralManagement"
 import { PeriodsManagement } from "../pages/periods/PeriodsManagement";
 import { PrivateRoute } from "./PrivateRouter";
 import { ProviderUserContext } from "../contexts/auth/UserContext";
-
+import { ChakraProvider } from '@chakra-ui/react';
+import { RoomManagement } from "../pages/room/RoomManagement";
 
 
 
@@ -21,11 +22,12 @@ export function Index() {
     <>
       <BrowserRouter>
         <ProviderUserContext>
+          {/* <ChakraProvider> */}
           <Routes>
             <Route path={"/"} element={<Access />} />
             <Route path={"/session/admin"} element={<Admin />} />
-            <Route path={"/session/teacher"} element={<Teacher />} />
-            <Route path={"/session/student"} element={<Student />} />
+            <Route path={"/session/professores"} element={<Teacher />} />
+            <Route path={"/session/estudantes"} element={<Student />} />
 
             <Route path={'/dashboard'} element={<PrivateRoute>
             
@@ -34,15 +36,20 @@ export function Index() {
               
               {/* Admin */}
               <Route path={"/dashboard"} element={<Dashboard />} >
-                <Route path={"/dashboard/course"} element={<Course />} />
-                <Route path={"/dashboard/management"} element={<GeneralManagement />} />
-                <Route path={"/dashboard/periods"} element={<PeriodsManagement />} />
+                <Route path={"/dashboard/cursos"} element={<Course />} />
+                <Route path={"/dashboard/gestao_geral"} element={<GeneralManagement />} />
+                <Route path={"/dashboard/períodos"} element={<PeriodsManagement />} />
+                <Route path={"/dashboard/períodos/:id"} element={<PeriodsManagement />} />
+
+
+
+                <Route path={"/dashboard/salas"} element={<RoomManagement />} />
               </Route>
-            
 
             <Route path={"*"} element={<NotFound />} />
 
           </Routes>
+              {/* </ChakraProvider> */}
         </ProviderUserContext>
       </BrowserRouter>
     </>

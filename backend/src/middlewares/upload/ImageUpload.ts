@@ -19,7 +19,7 @@ const storage = multer.diskStorage({
             folder = 'teachers';
         }
 
-        cb(null, `public/images/${folder}` );
+        cb(null, `public/${folder}` );
 
     },
     

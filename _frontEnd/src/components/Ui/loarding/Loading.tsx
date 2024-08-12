@@ -1,32 +1,28 @@
-import { useState } from 'react';
-import {Spinner} from '@chakra-ui/react'
+import { Spinner } from '@chakra-ui/react'
+
+interface loadingProps {
+  loading: boolean
+}
 
 
-
-
-
-function Loading() {
-
-  const [loading, setLoading] = useState<boolean>(true);
-
-  // setLoading(false)
+function Loading({ loading }: loadingProps) {
   return (
     <>
       {loading &&
         (
-            <div className="container text-center justify-content-center">
-                <Spinner 
-                    thickness='4px'
-                    speed='0.65s'
-                    emptyColor='gray.200'
-                    color='purple.400'
-                    size='xl'
-                />
-            </div>
+          <div className="container text-center justify-content-center">
+            <Spinner
+              thickness='4px'
+              speed='0.65s'
+              emptyColor='gray.200'
+              color='purple.400'
+              size='xl'
+            />
+          </div>
         )
-    }
+      }
     </>
   );
 }
 
-export {Loading}
+export { Loading }

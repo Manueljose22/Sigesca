@@ -17,7 +17,7 @@ function NavBar({toggleSidebar}: INavBarProps) {
   const handleLogout = () =>{
 
     logout();
-    navigate('/');
+    navigate('/session/student');
   }
 
   return (

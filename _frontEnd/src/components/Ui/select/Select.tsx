@@ -10,7 +10,7 @@ function Select({ handleOnchange, label, name, value, data }: ISelectProps) {
             <div className='d-flex flex-column align-items-center mb-4'>
                 <select onChange={handleOnchange} className='form-control' name={name} id={name}>
                     <option value={value}>Activo</option>
-                    <option value={value}>Agendado</option> 
+                    <option value={value}>Encerrado</option> 
                 </select>
             </div>
         </div>
