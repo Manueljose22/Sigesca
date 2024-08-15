@@ -11,7 +11,7 @@ export type saveRoom = {
 
 export type requestRoom = {
     name: string;
-    numberStudents: number;
+    numberStudents: string;
 }
 
 

@@ -42,13 +42,13 @@ function SideBar({isOpen}: ISideBarProps) {
 
         <hr className='m-0 p-0' />
        <li className={`${isActive === 0 ? styles.bg_active : ''}  px-4 fw-3 my-3 border-bottom-sm list-unstyled`}>
-          <Link onClick={() => handleClick(0)} to={'/dashboard/'} className={`d-flex align-items-center`}>
+          <Link onClick={() => handleClick(0)} to={'/admin/'} className={`d-flex align-items-center`}>
             <BiSolidHome className='me-2' />  Painel
           </Link>
        </li>
        <nav className='mt-3 px-4'>
           <li  className={` ${isActive === 1 ? styles.bg_active : ''} pointer list-unstyled d-flex align-items-center mb-3'`}>
-            <Link onClick={() => handleClick(1)} to={'/dashboard/gestao_geral'} className='d-flex align-items-center' >
+            <Link onClick={() => handleClick(1)} to={'/admin/gestao_geral'} className='d-flex align-items-center' >
               <BiSolidDashboard className='me-2' /> Gestão geral <FaAngleRight/>
             </Link>
           </li>
@@ -60,7 +60,7 @@ function SideBar({isOpen}: ISideBarProps) {
               className={` ${ isActive === 2 ? styles.bg_active : '' }  
               ${styles.btn_down} d-flex align-items-center mb-3  list-unstyled collapsed pointer align-items-center mt-2`} >
 
-              <Link onClick={() => handleClick(2)}  to={'/dashboard/estudantes'} className='d-flex align-items-center'> 
+              <Link onClick={() => handleClick(2)}  to={'/admin/estudantes'} className='d-flex align-items-center'> 
                 <FaUserGraduate className='me-2' /> 
                   Alunos 
                 <FaAngleRight/> 
@@ -74,7 +74,7 @@ function SideBar({isOpen}: ISideBarProps) {
               className={` ${isActive === 3 ? styles.bg_active : ''} ${styles.btn_down} 
               d-flex align-items-center mb-3 list-unstyled collapsed pointer align-items-center mt-2`} 
               >
-              <Link onClick={() => handleClick(3)}  to={'/dashboard/admin/professores'} className='d-flex align-items-center'>
+              <Link onClick={() => handleClick(3)}  to={'/admin/professores'} className='d-flex align-items-center'>
                 <FaChalkboardUser className='me-2' /> 
                   Professores 
                 <FaAngleRight/>
@@ -88,7 +88,7 @@ function SideBar({isOpen}: ISideBarProps) {
             className={` ${isActive === 4 ? styles.bg_active : ''} ${styles.btn_down}
              d-flex align-items-center mb-3 list-unstyled collapsed pointer align-items-center mt-2`} >
             
-            <Link onClick={() => handleClick(4)}  to={'/dashboard/admin/usuarios'} className='d-flex align-items-center'> 
+            <Link onClick={() => handleClick(4)}  to={'/admin/usuarios'} className='d-flex align-items-center'> 
               <FaUser className='me-2' /> 
                 Administradores 
               <FaAngleRight/>
@@ -99,7 +99,7 @@ function SideBar({isOpen}: ISideBarProps) {
         {/* configuration */}
 
           <li className='my-2 list-unstyled d-flex align-items-center'>
-              <Link to={'/dashboard/admin/configuracoes'} className='d-flex align-items-center'> 
+              <Link to={'/admin/configuracoes'} className='d-flex align-items-center'> 
                 <FaGear /> 
                   Configurações
                 </Link>

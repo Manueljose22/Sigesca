@@ -25,7 +25,7 @@ function Student() {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     login(credentials);
-    navigate('/dashboard')
+    navigate('/admin')
   }
   return (
     <section className={`${styles.container} container-fluid bg-purple h-100vh d-flex flex-column justify-content-center align-items-center p-3`}>

@@ -11,3 +11,8 @@
     min-width: 0;
     background-color: #fff;
 }
+
+.dashboard{
+    max-height: 91vh;
+    overflow-y: scroll;
+}

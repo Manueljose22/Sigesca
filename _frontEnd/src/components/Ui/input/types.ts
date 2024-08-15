@@ -15,3 +15,12 @@ export interface IInputProps{
     border?: any;
 
 }
+export interface IInputEditProps{
+    type: string;
+    name: string;
+    value?: string;
+    handleChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+    textLabel: string;
+    required?: boolean;
+    readOnly: boolean;
+}

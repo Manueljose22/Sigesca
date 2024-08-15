@@ -1,4 +1,5 @@
 
+import Button from "../../../../components/Ui/button/Button";
 import { Input } from "../../../../components/Ui/input/Input";
 import { Select } from "../../../../components/Ui/select/Select";
 import { IFormPeriodsProps } from "./types";
@@ -29,7 +30,7 @@ function PeriodsForm({ handleSubmit, handleChange, handleSelect }: IFormPeriodsP
 
                         />
                     </div>
-                    <div className="col-lg-2 col-md-3 col-sm-4">
+                    <div className="col-lg-3 col-md-3 col-sm-4">
                         <Input
                             textLabel={'Data de inicio:'}
                             name={'dateStart'}
@@ -40,7 +41,7 @@ function PeriodsForm({ handleSubmit, handleChange, handleSelect }: IFormPeriodsP
                         />
 
                     </div>
-                    <div className="col-lg-2 col-md-3 col-sm-4">
+                    <div className="col-lg-3 col-md-3 col-sm-4">
                         <Input
                             textLabel={'Data de fim:'}
                             name={'dateEnd'}
@@ -48,6 +49,7 @@ function PeriodsForm({ handleSubmit, handleChange, handleSelect }: IFormPeriodsP
                             handleChange={handleChange}
                             iconBar={'none'}
                             border={'border'}
+                            
                         />
                     </div>
                     <div className="col-lg-2 col-md-3 col-sm-4">
@@ -58,10 +60,8 @@ function PeriodsForm({ handleSubmit, handleChange, handleSelect }: IFormPeriodsP
                         />
 
                     </div>
-                    <div className="col-lg-2 col-md-3 col-sm-4 d-flex align-items-center">
-                        <div className="mt-3">
-                            <button type="submit" className="btn btn-success">Adicionar</button>
-                        </div>
+                    <div className="col-lg-2 col-md-4 col-sm-4 pt-4">
+                        <Button textButton={'Adicionar'} type={'submit'} colorScheme={'btn-success'} />
                     </div>
 
 

@@ -1,34 +1,25 @@
-import {Modal, ModalDialog, ModalHeader, ModalBody} from 'react-bootstrap'
+import styles from './Modal.module.css';
+import { IModalProps } from './types';
 
-
-
-
-function ModalContainer() {
-
-    const showModal = () =>{
-        const myModal = new bootstrap.Modal()
+function Modal({isOpen,setOpen, children, whidth}: IModalProps) {
+  
+    if (isOpen) {
+        return (
+            <div className={`${styles.background}`}>
+                <div className={`${styles.modal} bg-secondary ${whidth}`}>
+                    <div className='row'>
+                        <div className="col-12 text-end px-2">
+                            <button className='border-0 py-1 pe-3 px-2 rounded text-center' onClick={()=> setOpen(!isOpen)}>X</button>
+                        </div>
+                    </div>
+                    <div className="container p-2">
+                        {children}
+                    </div>
+                </div>
+            </div>
+        )
     }
 
-  return (
-    <div className='container-fluid'>
-        
-    </div>
-  )
 }
 
-export { Modal }
-
- // <div className="modal" tabIndex={-1} id="myModal" data-bd-backdrop="static">
-    //     <div className="modal-dialog">
-    //         <div className="modal-content">
-    //             <div className="modal-header">
-    //                 <h5 className="modal-title">Minha Modal</h5>
-    //                 <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
-    //             </div>
-
-    //             <div className="modal-body">
-    //                 <p>Corpo modal</p>
-    //             </div>
-    //         </div>
-    //     </div>
-    // </div>
+export default Modal

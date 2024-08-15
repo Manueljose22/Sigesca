@@ -1,15 +1,15 @@
-import { IRoomService } from "./types";
+import { ICreateRoom, IRoom, IUpdateRoom } from "./types";
 import { Api } from "../../utils/api/ApiConfig";
 
 
 const token = localStorage.getItem('token') || '';
 
 
-const getAll = async (): Promise<IRoomService[]> => {
+const getAll = async (): Promise<IRoom[]> => {
 
     try {
 
-        const { data } = await Api.get('/room/', {
+        const { data } = await Api.get<IRoom[]>('/room/', {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -18,16 +18,16 @@ const getAll = async (): Promise<IRoomService[]> => {
         return data;
 
     } catch (error: any) {
-       throw new Error(error.response.data.message);
+        throw new Error(error.response.data.message);
     }
 
 }
 
-const create = async (room: Omit<IRoomService, 'idPeriod'>): Promise<IRoomService> => {
+const create = async (room: ICreateRoom[]): Promise<ICreateRoom> => {
 
     try {
 
-        const { data } = await Api.post<any>('/room/register', room, {
+        const { data } = await Api.post<ICreateRoom>('/room/register', room, {
             headers: {
                 Authorization: `Bearer ${token}`,
             }
@@ -42,11 +42,11 @@ const create = async (room: Omit<IRoomService, 'idPeriod'>): Promise<IRoomServic
 
 }
 
-const getById = async (id: string): Promise<IRoomService> => {
+const getById = async (id?: string): Promise<IRoom> => {
 
     try {
 
-        const { data } = await Api.get(`/room/${id}`, {
+        const { data } = await Api.get<IRoom>(`/room/${id}`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -61,11 +61,11 @@ const getById = async (id: string): Promise<IRoomService> => {
 
 }
 
-const update = async (room: IRoomService, id: string): Promise<void> => {
+const update = async (room: IUpdateRoom, id?: string): Promise<IUpdateRoom> => {
 
     try {
 
-        const { data } = await Api.put(`/room/${id}`, room, {
+        const { data } = await Api.put<IUpdateRoom>(`/room/${id}`, room, {
             headers: {
                 Authorization: `Bearer ${token}`
             }

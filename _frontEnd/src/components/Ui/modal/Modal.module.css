@@ -1,0 +1,23 @@
+.background{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #0000003f;
+    height: 100%;
+    width: 100%;
+    transition: .30s all;
+}
+
+.modal{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transition: .30s all;
+    transform: translate(-50%, -50%);
+    border-radius: .4rem;
+    overflow: hidden;
+    background-color: #d4dde7;
+
+}
+

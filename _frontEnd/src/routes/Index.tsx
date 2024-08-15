@@ -11,13 +11,12 @@ import { GeneralManagement } from "../pages/generalManagement/GeneralManagement"
 import { PeriodsManagement } from "../pages/periods/PeriodsManagement";
 import { PrivateRoute } from "./PrivateRouter";
 import { ProviderUserContext } from "../contexts/auth/UserContext";
-import { ChakraProvider } from '@chakra-ui/react';
 import { RoomManagement } from "../pages/room/RoomManagement";
 
 
 
 
-export function Index() {
+function Index() {
   return (
     <>
       <BrowserRouter>
@@ -29,29 +28,32 @@ export function Index() {
             <Route path={"/session/professores"} element={<Teacher />} />
             <Route path={"/session/estudantes"} element={<Student />} />
 
-            <Route path={'/dashboard'} element={<PrivateRoute>
-            
+            <Route path={'/admin'} element={<PrivateRoute>
+
               <Dashboard />
             </PrivateRoute>} />
-              
-              {/* Admin */}
-              <Route path={"/dashboard"} element={<Dashboard />} >
-                <Route path={"/dashboard/cursos"} element={<Course />} />
-                <Route path={"/dashboard/gestao_geral"} element={<GeneralManagement />} />
-                <Route path={"/dashboard/períodos"} element={<PeriodsManagement />} />
-                <Route path={"/dashboard/períodos/:id"} element={<PeriodsManagement />} />
+
+            {/* Admin */}
+            <Route path={"/admin"} element={<Dashboard />} >
+              <Route path={"/admin/cursos"} element={<Course />} />
+              <Route path={"/admin/gestao_geral"} element={<GeneralManagement />} />
+              <Route path={"/admin/gestao/períodos"} element={<PeriodsManagement />} />
+              <Route path={"/admin/gestao/períodos/:id"} element={<PeriodsManagement />} />
 
 
 
-                <Route path={"/dashboard/salas"} element={<RoomManagement />} />
-              </Route>
+              <Route path={"/admin/gestao/salas"}     element={<RoomManagement />} />
+              <Route path={"/admin/gestao/salas/:id"} element={<RoomManagement />} />
+            </Route>
 
             <Route path={"*"} element={<NotFound />} />
 
           </Routes>
-              {/* </ChakraProvider> */}
+          {/* </ChakraProvider> */}
         </ProviderUserContext>
       </BrowserRouter>
     </>
   );
 }
+
+export { Index }

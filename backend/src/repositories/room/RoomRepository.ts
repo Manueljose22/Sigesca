@@ -39,7 +39,11 @@ export class RoomRepository implements IRoomRepository {
 
     async findAll(): Promise<saveRoom[] | null> {
 
-        const alls = await prismaClient.sala.findMany();
+        const alls = await prismaClient.sala.findMany({
+            orderBy: {
+                nome: 'asc'
+            }
+        });
         return alls;
     }
 
@@ -60,7 +64,7 @@ export class RoomRepository implements IRoomRepository {
             },
             data: {
                 nome: name,
-                capacidadeAlunos: numberStudents,
+                capacidadeAlunos: parseInt(numberStudents) ,
                 updatedAt: new Date()
             }
         })

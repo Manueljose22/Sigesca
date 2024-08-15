@@ -1,27 +1,11 @@
-import { Spinner } from '@chakra-ui/react'
-
-interface loadingProps {
-  loading: boolean
-}
+import gifLoading from '../../../../public/gif.gif'
 
 
-function Loading({ loading }: loadingProps) {
+function Loading() {
   return (
-    <>
-      {loading &&
-        (
-          <div className="container text-center justify-content-center">
-            <Spinner
-              thickness='4px'
-              speed='0.65s'
-              emptyColor='gray.200'
-              color='purple.400'
-              size='xl'
-            />
-          </div>
-        )
-      }
-    </>
+    <div className="container text-center justify-content-center my-5">
+      <img src={gifLoading} alt="loading" />
+    </div>
   );
 }
 

@@ -3,10 +3,10 @@ import styles from './Button.module.css';
 
 
 
-function Button({ textButton, type }: submitProps) {
+function Button({ textButton, type, colorScheme }: submitProps) {
   return (
     
-      <button className={`${styles.btn_submit}`} type={type}>{textButton}</button>
+      <button className={`${styles.btn_submit} ${colorScheme}`} type={type}>{textButton}</button>
     
   );
 }

@@ -26,7 +26,7 @@ function Admin() {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     login(credentials);
-    navigate('/dashboard')
+    navigate('/admin')
   }
 
   return (

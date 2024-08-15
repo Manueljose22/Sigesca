@@ -30,7 +30,11 @@ export class PeriodsRepository implements IPeriodsRepository{
     }
     
     async findAll(): Promise<savePeriods[] | null> {
-        const all = await prismaClient.periodo_letivo.findMany();
+        const all = await prismaClient.periodo_letivo.findMany({
+            orderBy:{
+                year: "desc"
+            }
+        });
         return all;
     }
 

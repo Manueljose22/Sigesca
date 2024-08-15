@@ -7,5 +7,6 @@ export interface IContainerProps {
     textBtnDetails: string;
     showDetails: React.ReactNode;
     addNew: React.ReactNode;
+    isShow: boolean
   
 }

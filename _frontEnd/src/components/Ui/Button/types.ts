@@ -12,4 +12,6 @@ export interface buttonProps{
 export interface submitProps{
     textButton: string;
     type: 'submit' | undefined;
+    colorScheme?: string;
+
 }

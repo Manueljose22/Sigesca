@@ -48,7 +48,7 @@ export const userAuth = () => {
         setAuthenticated(true);
         localStorage.setItem('token', data.token);
 
-        navigate('/dashboard');
+        navigate('/admin');
     }
 
     const logout = () => {

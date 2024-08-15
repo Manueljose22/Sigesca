@@ -1,5 +1,5 @@
 import { Container } from "../../components/containers/Container";
-import { TableView } from "./components/table/TableView";
+import { CardPeriods } from "./components/card/CardPeriods";
 import { PeriodsForm } from "./components/form/PeriodsForm";
 import { ChangeEvent, FormEvent, useCallback, useEffect, useState } from "react";
 import { IPeriods } from "../../services/periods/types";
@@ -71,7 +71,7 @@ function PeriodsManagement() {
             subtitle={'Período lectivo'}
             textBtnDetails={'Períodos'}
 
-            showDetails={<TableView 
+            showDetails={<CardPeriods 
                 isEnabled={isEnabled}
                 isLoading={isLoading} 
                 handleEdit={handleEdit}

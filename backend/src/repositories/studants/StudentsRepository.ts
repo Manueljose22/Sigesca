@@ -135,8 +135,8 @@ export class StudentsRepository implements IStudentsRepository {
         const student = await prismaClient.aluno.findMany({
             where: {
                 nome: {
-                    startsWith: name,
-
+                    contains: name,
+                    equals: name
                 }
             }, include: {
                 Endereco: {

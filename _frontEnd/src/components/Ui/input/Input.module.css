@@ -19,6 +19,8 @@
     display: none;
 }
 
+
+
 .container label{
     font-weight: 600;
 }
@@ -29,4 +31,11 @@
 }
 .border input:focus{
     border-color: var(--color-3);
+}
+
+
+/*  edit */
+
+.inputEdit input{
+    outline: none !important;
 }

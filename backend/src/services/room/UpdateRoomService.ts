@@ -8,7 +8,7 @@ class UpadteRoomService {
 
     async execute(id: string, {name, numberStudents}: requestRoom): Promise<void | Error> {
 
-        const room = await this.IRoomRepository.findByName(name);
+        const room = await this.IRoomRepository.findById(id);
 
         if (!room) {
             throw new Error('Sala inválida!')

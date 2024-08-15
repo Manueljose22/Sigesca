@@ -13,21 +13,21 @@ function GeneralManagement() {
                     <Card
                         title={'Período Lectivo'}
                         description={'Defina o período lectivo actual da instituíção, o edite ou o finalize.'}
-                        url={'/dashboard/períodos'}
+                        url={'/admin/gestao/períodos'}
                     />
                 </div>
                 <div className="col-lg-3 col-md-4">
                     <Card
                         title={'Sala'}
                         description={'Crie edite as salas onde serão realizadas as aulas da instituíção.'}
-                        url={'/dashboard/salas'}
+                        url={'/admin/gestao/salas'}
                     />
                 </div>
                 <div className="col-lg-3 col-md-4">
                     <Card
                         title={'Curso'}
                         description={'Crie os cursos que serão ofericidos aos alunos.'}
-                        url={'/dashboard/cursos'}
+                        url={'/admin/gestao/cursos'}
                     />
                 </div>
             </div>
@@ -36,14 +36,14 @@ function GeneralManagement() {
                     <Card
                         title={'Disciplina'}
                         description={'Crie as disciplinas que serão ministradas pelos professores.'}
-                        url={'/dashboard/disciplinas'}
+                        url={'/admin/gestao/disciplinas'}
                     />
                 </div>
                 <div className="col-lg-5 col-md-6">
                     <Card
                         title={'Turma'}
                         description={'Adicione uma nova turma ao seu período lectivo.'}
-                        url={'/dashboard/turmas'}
+                        url={'/admin/gestao/turmas'}
                     />
                 </div>
             </div>

@@ -5,11 +5,12 @@ import { IContainerProps } from "./types"
 import { useState } from "react";
 
 
-function Container({ title, subtitle, textBtnDetails, addNew, showDetails }: IContainerProps) {
+function Container({ title, subtitle, textBtnDetails, addNew, showDetails, isShow }: IContainerProps) {
 
     const [isVisiblity, setVisiblity] = useState<boolean>(false);
 
-
+    
+    
     const handleClick = () => {
         setVisiblity(!isVisiblity);
     };
@@ -29,7 +30,7 @@ function Container({ title, subtitle, textBtnDetails, addNew, showDetails }: ICo
                 />
             </div>
             <div className="row">
-                {isVisiblity ? (
+                {isVisiblity ?? isShow ? (
 
                     <div className="col-lg-6 col-md-6 w-100">
                         {addNew}
